@@ -8,6 +8,8 @@
 }
 \usage{
 data(aa.3rv)
+# m.fac9003 described in ch09data
+# q.jnj described in dh02data 
 }
 \format{
   The text of chapter 11 considers one data set not used in previous
@@ -36,7 +38,7 @@ data(aa.3rv)
 }
 \keyword{datasets}
 \seealso{
-  \code{\link{ch01data}} 
+  \code{\link{ch09data}} 
   \code{\link{ch02data}}
 }
 %\examples{

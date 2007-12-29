@@ -25,10 +25,10 @@ data(d.sp8099  )
 }
 \format{
   Three data stes used in chapter 3 are also used in chapter 1 or 2 and
-  are documented with 'ch01data' or 'ch02data':  'm.intc7303' and
-  'd.ibmvwewsp6203' are used in both chapters 1 and 3 and are documented
-  with 'ch01data';  'm.ibm2697' is used in both chapters 2 and 3 is
-  documented with ch02data.
+  are documented with 'ch01data' or 'ch02data':  In particular,
+  'm.intc7303' and 'd.ibmvwewsp6203' are used in chapters 1 and 3 and
+  are documented with 'ch01data';  'm.ibm2697' is used in chapters 2 and
+  3 is documented with ch02data.
 
   The other data sets used in chapter 3 are as follows:  
 
@@ -43,7 +43,8 @@ data(d.sp8099  )
     object of class 'zooreg' giving the monthly excess returns of the
     S&P 500 index starting from 1926.  This zooreg object is labeled
     assuming it starts in January, though the book does not say whether
-    it starts in January or just some time in 1926.  
+    it starts in January or just some time in 1926.  (Many of the files
+    included date with the data, but 'sp500.dat' did not.)  
   }
   \item{m.ibmspln}{
     object of class 'zooreg' giving the monthly log returns of IBM stock

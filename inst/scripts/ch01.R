@@ -16,22 +16,18 @@ library(FinTS)
 ##
 
 # p. 4
-##
-## Table 1.1.  Illustration of the effects of compounding
-##
-frequencies <- c(1, 2, 4, 12, 52, 365, Inf)
+# Table 1.1.  Illustration of the effects of compounding
+freqs <- c(1, 2, 4, 12, 52, 365, Inf)
+cI <- compoundInterest(0.1, frequency=freqs)
 (Table1.1 <- data.frame(Type=c(
     "Annual", "Semiannual", "Quarterly",
     "Monthly", "Weekly", "Daily", "Continuously"),
-  Number.of.payments=frequencies, 
-  Interest.rate.per.period=0.1/frequencies,
-  Net.Value=compoundInterest(0.1,
-    frequency=frequencies) ) )
+  Number.of.payments=freqs, 
+  Interest.rate.per.period=0.1/freqs,
+  Net.Value=cI) )
 
 # p.  6  
-##
-## Example 1.1.
-##
+# Example 1.1.
 logRtn <- .0446
 100*expm1(logRtn)
 
@@ -45,9 +41,7 @@ mo.logRtns <- c(.0446, -.0734, .1077)
 # sec. 1.2.1.  Review of Statistical Distributions and their Moments
 
 # p. 10
-##
-## Example 1.2.
-## 
+# Example 1.2.
 data(d.ibmvwewsp6203)
 s.ibm <- sd(d.ibmvwewsp6203[, "IBM"])
 (skew.ibm <- skewness(d.ibmvwewsp6203[, "IBM"]))
@@ -62,10 +56,8 @@ library(moments)
 (skew.test <- agostino.test(as.numeric(d.ibmvwewsp6203[, "IBM"])))
 
 # p. 11
-##
-## Table 1.2.  Descriptive Statistics for Daily and Monthly
-##             Simple and Log Returns for Selected Indexes and Stocks
-##
+# Table 1.2.  Descriptive Statistics for Daily and Monthly
+#             Simple and Log Returns for Selected Indexes and Stocks
 data(d.ibmvwewsp6203)
 data(d.intc7303)
 data(d.3m6203)
@@ -189,9 +181,9 @@ par(op)
 if(require(logspline)){
 
   m.ibm <- m.ibmvwewsp2603[, "IBM"]
-  dens.ibm.rtns <- logspline(100*m.ibm)
+  dens.ibm.rtns <- logspline(100*as.numeric(m.ibm))
   m.log.ibm <- 100*log(1+m.ibm)
-  dens.ibm.logrtns <- logspline(m.log.ibm)
+  dens.ibm.logrtns <- logspline(as.numeric(m.log.ibm))
 
   op <- par(mfrow=c(1,2))
   plot(dens.ibm.rtns, xlim=c(-40, 40), xlab="simple returns", ylab="density")
@@ -218,7 +210,8 @@ qqnorm(m.log.ibm, datax=TRUE)
 ##
 ## 1.3.  Processes Considered
 ##
-
+data(m.gs10)
+data(m.gs1)
 # Figure 1.5.  Time plot of US monthly interest rates 
 op <- par(mfrow=c(2,1))
 plot(m.gs10, xlab="year", ylab="rate", type="l")
@@ -230,7 +223,7 @@ par(op)
 # p. 21
 # Figure 1.6.  Time plot of daily exchange rate
 #              between US dollara and Japanese Yen 
-
+data(d.fxjp00)
 op <- par(mfrow=c(2,1))
 plot(d.fxjp00, xlab="year", ylab="Yens", type="l")
 plot(diff(d.fxjp00), xlab="year", ylab="Change", type="l")
@@ -238,19 +231,25 @@ par(op)
 
 # p. 22
 # Table 1.3.  Descriptive Statistics of Selected US Financial Time Series
-
+data(m.fama.bond5203)
 (m.bondRtns <- rbind(
   "1-12 months"=FinTS.stats(100*m.fama.bond5203[, "m1.12"]), 
   "24-36 months"=FinTS.stats(100*m.fama.bond5203[, "m24.36"]), 
   "48-60 months"=FinTS.stats(100*m.fama.bond5203[, "m48.60"]), 
   "61-120 months"=FinTS.stats(100*m.fama.bond5203[, "m61.120"]) ))
 
+data(m.gs1)
+data(m.gs3)
+data(m.gs5)
+data(m.gs10)
 (m.treasuryRtns <- rbind(
   "1 year"=FinTS.stats(m.gs1),
   "3 years"=FinTS.stats(m.gs3),
   "5 years"=FinTS.stats(m.gs5),
   "10 years"=FinTS.stats(m.gs10) ))
 
+data(w.tb3ms)
+data(w.tb6ms)
 (w.treasuryRtns <- rbind(
   "3 months"=FinTS.stats(w.tb3ms),
   "6 months"=FinTS.stats(w.tb6ms) ) )

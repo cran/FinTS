@@ -2,8 +2,9 @@ ARIMA <- function(x, order = c(0, 0, 0),
       seasonal = list(order = c(0, 0, 0), period = NA),
       xreg = NULL, include.mean = TRUE, transform.pars = TRUE,
       fixed = NULL, init = NULL, method = c("CSS-ML", "ML", "CSS"),
-      n.cond, optim.control = list(), kappa = 1e6,
-      Box.test.lag=NULL, type = c("Ljung-Box", "Box-Pierce")){
+      n.cond, optim.control = list(), kappa = 1e6, Box.test.lag=NULL,
+      Box.test.df = c("net.lag", "lag"), 
+      type = c("Ljung-Box", "Box-Pierce", "rank")){
 ##
 ## 1.  arima
 ##
@@ -30,12 +31,17 @@ ARIMA <- function(x, order = c(0, 0, 0),
 ##
 ## 3.  Compute the statistic & p.value
 ##  
-  LjB <- Box.test(fit$resid, Lag, type=tp)
+  LjB <- AutocorTest(fit$resid, Lag, type=tp)
 ##
 ## 4.  Fix the degrees of freedom.
 ##
-# 4.1.  number of parametere estimated, not counting 'intercept'   
-  LjB$parameter <- df. <- (LjB$parameter - kPars)
+# 4.1.  number of parametere estimated, not counting 'intercept'
+  df. <- Box.test.df
+  if(is.character(df.)){
+    Box.test.df <- match.arg(Box.test.df)
+    df. <- (LjB$parameter - (Box.test.df == "net.lag")* kPars) 
+  }
+  LjB$parameter <- df. 
 # 4.2.  Correct the p.value  
   LjB$p.value <- pchisq(LjB$statistic, df., lower.tail=FALSE)
 # 4.3.  Store 

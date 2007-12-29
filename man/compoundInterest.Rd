@@ -33,7 +33,7 @@ simple2logReturns(R)
 \references{
   Ruey Tsay (2005)
   Analysis of Financial Time Series, 2nd ed. (Wiley, p. 6)
-  }
+}
 %\seealso{ \code{\link{}} }
 \examples{
 # "Net Value" column of Tsay Table 1.1, p. 4

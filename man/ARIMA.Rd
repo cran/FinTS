@@ -6,11 +6,12 @@
 }
 \usage{
 ARIMA(x, order = c(0, 0, 0),
-      seasonal = list(order = c(0, 0, 0), period = NA),
-      xreg = NULL, include.mean = TRUE, transform.pars = TRUE,
-      fixed = NULL, init = NULL, method = c("CSS-ML", "ML", "CSS"),
-      n.cond, optim.control = list(), kappa = 1e6,
-      Box.test.lag=NULL, type = c("Ljung-Box", "Box-Pierce"))
+     seasonal = list(order = c(0, 0, 0), period = NA),
+     xreg = NULL, include.mean = TRUE, transform.pars = TRUE,
+     fixed = NULL, init = NULL, method = c("CSS-ML", "ML", "CSS"),
+     n.cond, optim.control = list(), kappa = 1e6, Box.test.lag=NULL,
+     Box.test.df = c("net.lag", "lag"), 
+     type = c("Ljung-Box", "Box-Pierce", "rank"))
 }
 \arguments{
   \item{x}{
@@ -79,17 +80,31 @@ ARIMA(x, order = c(0, 0, 0),
 
     The default is the minimum of the following:
 
-    round(log(sum(!is.na(x)))), recommended by Tsay (p. 27)
+%    \itemize{
+      round(log(sum(!is.na(x)))), recommended by Tsay (p. 27)
 
-    One more than the number of parameters estimated, not counting any
-    'intercept' in the model.    
+      One more than the number of parameters estimated, not counting any
+      'intercept' in the model.
+%    }
+  }
+  \item{Box.test.df}{
+    numeric or character variable indicating the degrees of freedom for
+    the ch-square approximation to the distribution of the Box.test
+    statistic.  The default 'net.lag' is 'Box.test.lag' minus the number
+    of relevant parameters estimated.  The primary alternative 'lag' is
+    the number of lags included in the computation of the statistic.
+
+    A positive number can also be provided.  
   }
   \item{type}{
     which Box.test 'type' should be used?  Partial matching is used.
 
-    NOTE:  The default 'type' is the more accurate and popular
-    'Ljung-Box', not the earlier 'Box-Pierce', which is the default for
-    'Box.test'.  
+    The 'rank' alternative computes 'Ljung-Box' on rank(x);  see Burns
+    (2002) and references therein.    
+
+    NOTE:  The default 'Ljung-Box' type generally seems to be more
+    accurate and popular than the earlier 'Box-Pierce', which is however
+    the default for 'Box.test'. 
   }
 }
 \details{
@@ -99,10 +114,23 @@ ARIMA(x, order = c(0, 0, 0),
 
   3.  Apply 'Box.test' to the whitened residuals.  
 
-  4.  Correct the degrees of freedom and p-value in Box.test.
-  Specifically, the corrected 'parameter' = the naive 'parameter' minus
-  the number of parameters estimated, apart from any named 'intercept'.
-  
+  4.  Compute the p-value in 'Box.test' using degrees of freedom =
+  Box.test.lag minus the number of parameters estimated, apart from any
+  named 'intercept'.  
+
+  NOTE:  Some software does not adjust the degrees of freedom for the
+  number of parameters estimated.  Tsay (2005) and Enders (2004) do.
+  The need to adjust the degrees of freedom discussed by Brockwell and
+  Davis (1990), who provide a proof describing the circumstances under
+  which this is appropriate. 
+
+  This is, however, an asymptotic result, and it would help to have
+  simulation studies of the distribution of the Ljung-Box statistic,
+  estimating degrees of freedom and evaluating goodness of fit.  Burns
+  recommends a rank version of the Ljung-Box test, but does not estimate
+  degrees of freedom.  If you have done such a simulation or know of a
+  reference describing such, would you please notify the maintainer of
+  this package? 
 }
 \value{
   an 'arima' object with an additional 'Box.test' component and if
@@ -115,8 +143,31 @@ ARIMA(x, order = c(0, 0, 0),
   or the answer can not be trusted with NAs.  
 }
 \references{
+  Brockwell and Davis (1990) Time Series: Theory and Methods, 2nd
+  Edition (Springer, page 310).
+
+  Walter Enders (2004) Applied Econometric Time Series (Wiley,
+  pp. 68-69)
+
+  Greta Ljung and George E. P. Box (1978) 'On a measure of lack of fit
+  in time series models', Biometrika, vol. 66, pp. 67-72.  
+  
   Ruey Tsay (2005) Analysis of Financial Time Series, 2nd ed. (Wiley,
   ch. 2)
+
+  Patrick Burns (2002) 'Robustness of the Ljung-Box Test and its Rank
+  Equivalent',
+  \url{http://www.burns-stat.com/pages/Working/ljungbox.pdf}, accessed
+  2007.12.29.  
+}
+\author{
+  Spencer Graves for the ARIMA{FinTS} wrapper for \link[stats]{arima},
+  written by the R Core Team, and \link[stats]{Box.text}, written by
+  A. Trapletti.  John Frain provided the citation to a proof in
+  Brockwell and Davis (1990) that the degrees of freedom for the
+  approximating chi-square distribution of the Ljung-Box statistic
+  should be adjusted for the number of parameters estimated.  Michal
+  Miklovic provided the citation to Enders (2004).  
 }
 \seealso{
   \code{\link[stats]{arima}}
