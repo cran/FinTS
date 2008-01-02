@@ -15,7 +15,7 @@ ARIMA(x, order = c(0, 0, 0),
 }
 \arguments{
   \item{x}{
-    a numvariate time series 
+    a univariate time series 
   }
   \item{order}{
     A specification of the non-seasonal part of the ARIMA model:  the

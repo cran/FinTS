@@ -1,10 +1,26 @@
 Acf <- function(x, lag.max = NULL,
          type = c("correlation", "covariance", "partial"),
          plot = TRUE, na.action = na.fail, demean = TRUE, ...){
-  ACF <- acf(x, lag.max = lag.max, type=type, 
-         plot = FALSE, na.action = na.action, demean = demean, ...)
+  dots <- list(...)  
+  dots$x <- x
+  dots$lag.max <- lag.max
+  dots$type <- type
+  dots$plot <- FALSE
+  dots$na.action <- na.action
+  dots$demean <- demean
+  {
+    if('main' %in% names(dots)){
+      main <- dots$main
+      dots$main <- NULL
+    }
+    else
+      main <- deparse(substitute(x))
+  }      
+#  ACF <- acf(x, lag.max = lag.max, type=type, 
+#         plot = FALSE, na.action = na.action, demean = demean, ...)
+  ACF <- do.call('acf', dots)
   class(ACF) <- c("Acf", class(ACF))
-  if(plot)plot(ACF, ...)
+  if(plot)plot(ACF, main=main, ...) 
   invisible(ACF)
 }
 

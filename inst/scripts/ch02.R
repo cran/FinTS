@@ -663,7 +663,7 @@ fit.d.gs0$r.squared
 
 # p. 86
 ##
-## sec. 2.10.  Consistent covariance matrix estimaation 
+## sec. 2.10.  Consistent covariance matrix estimation 
 ##
 
 # p. 88

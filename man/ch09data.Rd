@@ -90,8 +90,8 @@ data(m.apca0103)
     }
   }
   \item{m.apca0103}{
-    data.frame of monthly returns of 40 stocks from January 2001 through
-    December 2003, discussed in sect. 9.6.2, pp. 437ff.  
+    data.frame of monthly simple returns of 40 stocks from January 2001
+    through December 2003, discussed in sect. 9.6.2, pp. 437ff.  
 
     \itemize{
       \item{CompanyID}{5-digit company identification code}
@@ -120,6 +120,17 @@ data(m.apca0103)
   \code{\link{ch05data}}
   \code{\link{ch06data}}
 }
-%\examples{
-%}
+\examples{
+data(m.apca0103)
+dim(m.apca0103)
+# 1440 3;  1440 = 40*36
+# Are the dates all the same?
+sameDates <- rep(NA, 39) 
+for(i in 1:39)
+   sameDates[i] <- with(m.apca0103, all.equal(date[1:36],
+                         date[(i*36)+1:36]))
+stopifnot(all(sameDates))
+M.apca0103 <- with(m.apca0103, array(return, dim=c(36, 40), dimnames=
+        list(NULL, paste("Co", CompanyID[seq(1, 1440, 36)], sep=""))))
+}
 

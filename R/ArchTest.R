@@ -1,5 +1,8 @@
 ArchTest <- function (x, lags=12, demean = FALSE) 
 {
+# Capture name of x for documentation in the output  
+  xName <- deparse(substitute(x))
+# 
   x <- as.vector(x)
   if(demean) x <- scale(x, center = TRUE, scale = FALSE)
 #  
@@ -11,10 +14,10 @@ ArchTest <- function (x, lags=12, demean = FALSE)
   PARAMETER <- lags - 1
   names(PARAMETER) <- "df"
   PVAL <- 1 - pchisq(STATISTIC, df = PARAMETER)
-  METHOD <- "ARCH LM-test"
+  METHOD <- "ARCH LM-test;  Null hypothesis:  no ARCH effects"
   result <- list(statistic = STATISTIC, parameter = PARAMETER, 
                  p.value = PVAL, method = METHOD, data.name =
-                 deparse(substitute(x)))
+                 xName)
   class(result) <- "htest"
   return(result)
 }

@@ -16,6 +16,8 @@ AutocorTest <- function(x, lag=ceiling(log(length(x))),
     LjB$p.value <- pchisq(LjB$statistic, df, lower.tail=FALSE) 
     LjB$method <- paste(LjB$method, " (lag = ", lag, ")", sep="")
   }
+  LjB$data.name <- deparse(substitute(x))
+  LjB$Total.observ <- length(x)
 #  
   LjB  
 }
