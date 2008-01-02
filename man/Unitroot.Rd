@@ -67,7 +67,14 @@ Unitroot(x, trend=c("c", "nc", "ct"), method=c('adf', 'McKinnon'),
   numbers on pp. 70-72, except for the ADF p-value in the first
   example.  For this, 'adfTest' (and hence 'Uniroot') uses linear
   interpolation in a crude table.  This could be improved.  See the
-  examples below. 
+  examples below.
+
+  NOTE:  This function uses diff(x) rather than x as the response, so it
+  tests whether the coefficient of lag(x) is different from 0 rather
+  than testing if the coefficient is different from 1.  I mention it,
+  because the formula on the middle of p. 69 in Tsay (2005) describes
+  the "ADF-test" as comparing the regression coefficient to 1, rather
+  than to 0.  
 }
 \value{
   an object of class '"fHTEST"' as described with 'UnitrootTests' in the

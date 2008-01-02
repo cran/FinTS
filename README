@@ -57,10 +57,6 @@ Since 'fUtilities' is loaded anyway, I chanded 'DEPENDS' to
 use that instead.  I 
 Therefore, it's not clear if this is even needed.  
 
-fCalendar:  'holidayNYSE' used in 'scripts\create-ch08.R', 
--ch10.R and -ch11.R.  I don't think it's needed beyond that.  
-If not, it should be moved to 'SUGGESTS'.   
-
 
 PREVIOUS SUGGESTS:  
 
