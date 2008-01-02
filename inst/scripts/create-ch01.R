@@ -94,36 +94,38 @@ d.c8603[1:2]
 ## 6.  m-ibmvwewsp2603
 ##     Monthly simple returns of IBM, VW, EW, SP (1/26-12/03)
 ##     (Format: date, IBM, VW, EW, & SP) 
-m.ibmvwewsp2603 <- read.zoo(ch01.[6], format="%Y%m%d",
+m.ibmvwewsp2603 <- read.yearmon(ch01.[6], format="%Y%m%d",
            col.names=c("date", "IBM", "VW", "EW", "SP") )  
 m.ibmvwewsp2603[1:2,]
+index(m.ibmvwewsp2603)[1:2]
 
 ##
 ## 7.  m-intc7303
 ##     Monthly simple returns of Intel stock
 ##
-m.intc7303 <- read.zoo(ch01.[7], format="%Y%m%d",
+m.intc7303 <- read.yearmon(ch01.[7], format="%Y%m%d",
            col.names=c("date", "Intel") )
 m.intc7303[1:2, ]
+index(m.intc7303)[1:2]
 ##
 ## 8.  m-3m4603
 ##     Monthly simple returns of 3M stock
 ##
-m.3m4603 <- read.zoo(ch01.[8], format="%Y%m%d",
+m.3m4603 <- read.yearmon(ch01.[8], format="%Y%m%d",
            col.names=c("date", "3M") ) 
 m.3m4603[1:2,]
 ##
 ## 9.  m-msft8603
 ##     Monthly simple returns of Microsoft stock
 ##
-m.msft8603 <- read.zoo(ch01.[9], format="%Y%m%d",
+m.msft8603 <- read.yearmon(ch01.[9], format="%Y%m%d",
            col.names=c("date", "msft") ) 
 m.msft8603[1:2,]
 ##
 ## 10.  m-c8603
 ##      Monthly simple returns of Citi-group stock
 ##
-m.c8603 <- read.zoo(ch01.[10], format="%Y%m%d",
+m.c8603 <- read.yearmon(ch01.[10], format="%Y%m%d",
            col.names=c("date", "citi") )
 m.c8603[1:2, ]
 ##
@@ -143,15 +145,17 @@ m.gs10t <- as.Date(m.gs10a, "%Y %m %d")
 m.gs10t[1:4]
 
 m.gs10 <- zoo(as.numeric(substring(m.gs10a, 11)),
-              m.gs10t )
+              as.yearmon2(m.gs10t) )
                 
 m.gs10[1:2,]
+index(m.gs10)[1:2]
 
 m.gs1a <- readLines(ch01.[12])
 m.gs1a[1:2]
 m.gs1 <- zoo(as.numeric(substring(m.gs1a, 11)),
-             as.Date(m.gs1a, "%Y %m %d"))
+             as.yearmon2(as.Date(m.gs1a, "%Y %m %d")))
 m.gs1[1:2,]
+index(m.gs1)[1:2]
 
 ##
 ## 12.  d-fxjp00
@@ -186,7 +190,7 @@ d.fxjp00[1:4] # good
 ##
 ch01[14, ]
 readLines(ch01.[14], 4)
-m.fama.bond5203 <- read.zoo(ch01.[14], format="%Y%m%d",
+m.fama.bond5203 <- read.yearmon(ch01.[14], format="%Y%m%d",
       col.names=c("date", "m1.12", "m24.36", "m48.60", "m61.120") )
 m.fama.bond5203[1:2, ]
 ##
@@ -201,7 +205,7 @@ m.gs3d <- as.Date(m.gs3a, "%Y %m %d")
 m.gs3d[1:4]
 
 m.gs3 <- zoo(as.numeric(substring(m.gs3a, 11)),
-             m.gs3d)
+             as.yearmon2(m.gs3d))
 m.gs3[1:4]
 
 m.gs5a <- readLines(ch01.[16])
@@ -209,7 +213,7 @@ m.gs5a[1:4]
 m.gs5d <- as.Date(m.gs5a, "%Y %m %d")
 m.gs5d[1:4]
 m.gs5 <- zoo(as.numeric(substring(m.gs5a, 11)),
-             m.gs5d)
+             as.yearmon2(m.gs5d))
 m.gs5[1:4]
 
 ##
@@ -236,3 +240,8 @@ nObj1 <- length(ch01.datNames)
 for(i in 1:nObj1)
   save(list=ch01.datNames[i],
        file=ch01.rda[i])
+
+#####################
+# used to fix m.* after read.yearmon and as.yearmon2 were written:  
+#m.obj <- c(6:12, 14:16)
+#for(i in m.obj)save(list=ch01.datNames[i], file=ch01.rda[i])

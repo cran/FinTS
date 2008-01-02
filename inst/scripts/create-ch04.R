@@ -50,8 +50,9 @@ ch04. <- paste(TsayDir, ch04[, "file"], sep="")
 readLines(ch04.[1], 4)
 m.unrate. <- readLines(ch04.[1])
 m.unrate <- zoo(as.numeric(substring(m.unrate., 11)),
-                as.Date(m.unrate., "%Y %m %d"))
+                as.yearmon2(as.Date(m.unrate., "%Y %m %d")))
 m.unrate[1:4]
+index(m.unrate)[1:4]
 
 ##
 ## 2.  d-ibmvwewsp6203
@@ -141,3 +142,7 @@ sel4 <- c(1, 6:8)
 
 for(i in sel4)
   save(list=ch04.datNames[i], file=ch04.rda[i])
+
+#######################
+# correct the one file changed after writing as.yearmon2 and read.yearmon:
+#    save(list=ch04.datNames[1], file=ch04.rda[1])

@@ -78,7 +78,7 @@ q.gnp4791[1:22]
 ##     Monthly returns of EW index: (Date, IBM, VW, EW & SP)
 ##
 readLines(ch02.[4], 4)
-m.ibm3dx2603 <- read.zoo(ch02.[4], format="%Y%m%d",
+m.ibm3dx2603 <- read.yearmon(ch02.[4], format="%Y%m%d",
       col.names=c("Date", "IBM", "VW", "EW", "SP") )
 m.ibm3dx2603[1:4,]
 
@@ -87,7 +87,7 @@ m.ibm3dx2603[1:4,]
 ##     Monthly simple returns of 3M stock
 ##
 readLines(ch02.[5], 4)
-m.3m4697 <- read.zoo(ch02.[5], format="%Y%m%d",
+m.3m4697 <- read.yearmon(ch02.[5], format="%Y%m%d",
       col.names=c("Date", "MMM") )
 m.3m4697[1:4,]
 
@@ -102,8 +102,14 @@ q.gdp4703d <- as.yearmon(q.gdp4703a, "%Y %m")
 q.gdp4703d[1:4]
 class(q.gdp4703d)
 
+q.gdp4703q <- as.yearqtr(q.gdp4703d)
+q.gdp4703q[1:2]
+names(q.gdp4703q) <- q.gdp4703d
+q.gdp4703q[1:2]
+index(q.gdp4703q)[1:2]
+
 q.gdp4703 <- zoo(as.numeric(substring(q.gdp4703a, 8)),
-                 q.gdp4703d)
+                 q.gdp4703q)
 q.gdp4703[1:4]
 #q.gdp4703t <- strptime(q.gdp4703a, "%Y %m")
 #q.gdp4703t[1:4]
@@ -134,7 +140,7 @@ q.jnj[1:4]
 ##     Monthly simple returns of Deciles 1, 5, 10: m-decile1510.txt
 ##
 readLines(ch02.[9], 4)
-m.decile1510 <- read.zoo(ch02.[9], format="%Y%m%d",
+m.decile1510 <- read.yearmon(ch02.[9], format="%Y%m%d",
      col.names=c("date", "Decile1", "Decile5", "Decile10") )       
 m.decile1510[1:4,]
 
@@ -160,3 +166,10 @@ ch02.rda <- paste(ch02.datNames, "rda", sep=".")
 nObj2 <- length(ch02.datNames)
 for(i in 1:nObj2)
   save(list=ch02.datNames[i], file=ch02.rda[i])
+
+##########################
+m.obj2 <- c(4:5, 9)
+for(i in m.obj2)
+  save(list=ch02.datNames[i], file=ch02.rda[i])
+##############################
+  save(list=ch02.datNames[6], file=ch02.rda[6])

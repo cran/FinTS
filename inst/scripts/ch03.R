@@ -143,6 +143,7 @@ data(sp500)
 
 (spFit03 <- arima(sp500, c(0, 0, 3)))
 coef(spFit03)
+# not great:  Force ma2 = 0 
 (spFit03. <- arima(sp500, c(0, 0, 3),
                  fixed=c(ma1=NA, ma2=0, ma3=NA, intercept=NA)))
 names(spFit03.)
@@ -154,10 +155,12 @@ str(sp500)
 library(fGarch)
 spFit30.11 <- garchFit(sp500~arma(3,0)+garch(1,1),
                        data=sp500)
+spFit30.11
 # Difference from the book could be minor differences in
 # the accuracy of the nonlinear optimizer used.  
 
 # p. 117
+
 # Figure 3.5
 plot(sp500, xlab="year", ylab="rtn")
 abline(h=0, lty="dashed")
@@ -168,9 +171,21 @@ acf(sp500, lag.max=30, main="(a)", acfLag0=FALSE)
 pacf(sp500^2, main="(b)")
 par(op)
 
-# p. 118 
+# p. 118
+# unconditional var(a[t]) =
+str(spFit30.11)
+with(spFit30.11@fit, par["omega"]/(1-par["beta1"]-par["alpha1"]))
+# Differs from the book by 10%
+# ... within the numeric precision of available
+# algorithms for this type of problem?  
+
+# Drop insignificant terms and refit:  
+
 spFit00.11 <- garchFit(sp500~garch(1,1), data=sp500)
-summary(spFit00.11)
+spFit00.11
+# unconditional var(a[t]) =
+with(spFit00.11@fit, par["omega"]/(1-par["beta1"]-par["alpha1"]))
+# again within 10%
 
 str(spFit00.11)
 

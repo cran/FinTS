@@ -151,7 +151,6 @@ str(m.geln)
 
 ch12.datNames <- make.names(ch12[, 1])
 ch12.rda <- paste(ch12.datNames, "rda", sep=".")
-#save(list=ch12.datNames, file="ch12.rda")
 
 nObj1 <- length(ch12.datNames)
 for(i in 1:nObj1)

@@ -6,7 +6,8 @@
 }
 \usage{
 AutocorTest(x, lag=ceiling(log(length(x))),
-            type=c("Ljung-Box", "Box-Pierce", "rank") )
+            type=c("Ljung-Box", "Box-Pierce", "rank"),
+            df=lag )
 }
 \arguments{
   \item{x}{
@@ -30,11 +31,43 @@ AutocorTest(x, lag=ceiling(log(length(x))),
     accurate and popular than the earlier 'Box-Pierce', which is however
     the default for 'Box.test'. 
   }
+  \item{df}{
+    a positive number giving the degrees of freedom for the reference
+    chi-squre distribution used to compute the p-value for the
+    statistic.
+
+    This makes it easy to call AutocorTest with the residuals from a fit
+    and have the p-value computed with reference to a chi-square with
+    degrees of freedom different from "lag".  See the discussion
+    of degrees of freedom for 'Box.test in   \code{\link{ARIMA}}.      
+  }
 }
 \details{
   This is provided for compatibility with 'autocorTest' in the S-Plus
   script in Tsay (p. 30).  It is a wrapper for the R function
-  'Box.test'. 
+  \code{\link[stats]{Box.test}}.  
+}
+\value{
+  a list of class 'htest' containing the following components:
+
+  \itemize{
+    \item{statistic}{
+      a number giving the value of the test statistic.
+    }
+    \item{paramter}{
+      a number giving the degrees of freedom of the approximate
+      chi-squared distribution of the test statistic used to compute the
+      p.value.  
+    }
+    \item{p.value}{
+      the p-value of the test.
+    }
+    \item{method}{
+      a character string indicating which type of test was performed.
+      If(df != lag), this character string ends with
+      paste("(lag = ", lag, ")", sep="").  
+    }
+  }
 }
 \source{
   \url{
@@ -50,10 +83,16 @@ AutocorTest(x, lag=ceiling(log(length(x))),
   2007.12.29.  
 }
 \seealso{
-  \code{\link[stats]{Box.test}} }
+  \code{\link[stats]{Box.test}}
+  \code{\link{ARIMA}}
+}
 \examples{
 data(m.ibm2697)
 AutocorTest(m.ibm2697, 5)
+
+AT4 <- AutocorTest(m.ibm2697, 5, df=4)
+str(AT4) # $method = "Box-Ljung test (lag = 5)"
+
 }
 \keyword{ts}
 

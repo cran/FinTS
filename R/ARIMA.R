@@ -13,7 +13,8 @@ ARIMA <- function(x, order = c(0, 0, 0),
                fixed=fixed, init=init, method=method, n.cond=n.cond,
                optim.control=optim.control, kappa=kappa)
 ##
-## 2.  Compute desired number of lags for Box.test 
+## 2.  Compute desired number of lags and degrees of freedom
+##     for Box.test 
 ##
 #  2.1.  number of parameters estimated (apart from 'intercept')
   vc <- vcov(fit)
@@ -24,30 +25,27 @@ ARIMA <- function(x, order = c(0, 0, 0),
   kPars <- (dim(vc)[1] - int)
 # 2.2.  Box.test.lag 
   if(is.null(Box.test.lag))
-    Box.test.lag <- round(log(sum(!is.na(x))))
+    Box.test.lag <- round(log(sum(!is.na(x))))  
   Lag <- max(kPars+1, Box.test.lag)
-# 2.3.  'Ljung-Box' or 'Box-Pierce'?    
+# 2.3.  Box.test.df
+  df. <- Box.test.df
+  {
+    if(is.character(df.)){
+      Box.test.df <- match.arg(Box.test.df)
+      df. <- (Lag - (Box.test.df == "net.lag") * kPars)
+    }
+    else
+      if(df.<=0) df. <- 1
+  }
+# 2.4.  'Ljung-Box' or 'Box-Pierce'?    
   tp <- match.arg(type)
 ##
-## 3.  Compute the statistic & p.value
+## 3.  Compute AutocorTest 
 ##  
-  LjB <- AutocorTest(fit$resid, Lag, type=tp)
-##
-## 4.  Fix the degrees of freedom.
-##
-# 4.1.  number of parametere estimated, not counting 'intercept'
-  df. <- Box.test.df
-  if(is.character(df.)){
-    Box.test.df <- match.arg(Box.test.df)
-    df. <- (LjB$parameter - (Box.test.df == "net.lag")* kPars) 
-  }
-  LjB$parameter <- df. 
-# 4.2.  Correct the p.value  
-  LjB$p.value <- pchisq(LjB$statistic, df., lower.tail=FALSE)
-# 4.3.  Store 
+  LjB <- AutocorTest(fit$resid, lag=Lag, type=tp, df=df.)
   fit$Box.test <- LjB
 ##
-## 5.  'xreg'?  
+## 4.  'xreg'?  
 ##
   if(!is.null(xreg)){
     varX <- var(xreg)

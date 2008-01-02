@@ -78,7 +78,7 @@ ARIMA(x, order = c(0, 0, 0),
     the Box.test statistic will be based on 'Box.test.lag'
     autocorrelation coefficients of the whitened residuals.
 
-    The default is the minimum of the following:
+    The default is the maximum of the following:
 
 %    \itemize{
       round(log(sum(!is.na(x)))), recommended by Tsay (p. 27)
@@ -112,11 +112,7 @@ ARIMA(x, order = c(0, 0, 0),
 
   2.  Compute the desired number of lags for Box.test
 
-  3.  Apply 'Box.test' to the whitened residuals.  
-
-  4.  Compute the p-value in 'Box.test' using degrees of freedom =
-  Box.test.lag minus the number of parameters estimated, apart from any
-  named 'intercept'.  
+  3.  Apply 'AutocorTest' to the whitened residuals.  
 
   NOTE:  Some software does not adjust the degrees of freedom for the
   number of parameters estimated.  Tsay (2005) and Enders (2004) do.
@@ -130,13 +126,15 @@ ARIMA(x, order = c(0, 0, 0),
   recommends a rank version of the Ljung-Box test, but does not estimate
   degrees of freedom.  If you have done such a simulation or know of a
   reference describing such, would you please notify the maintainer of
-  this package? 
+  this package?
+
+  4.  If 'xreg' is supplied, compute r.squared.  
 }
 \value{
   an 'arima' object with an additional 'Box.test' component and if
   'xreg' is not null, an 'r.squared' component.  
 
-  NOTE:  The 'Box.test' help page in R 2.6.0 says, 'Missing values are
+  NOTE:  The 'Box.test' help page in R 2.6.1 says, 'Missing values are
   not handled.'  However, if 'x' contains NAs, 'ARIMA' still returns a
   numeric answer that seems plausible, at least in some examples.
   Therefore, either this comment on the help page is wrong (or obsolete)
@@ -184,11 +182,12 @@ lh100$Box.test
 # 2 parameters are estimated, but 1 is 'intercept',
 # so it doesn't count in the 'df' computation 
 
-lh300 <- ARIMA(lh, order = c(3,0,0))
-lh300$Box.test
+lh500 <- ARIMA(lh, order = c(5,0,0))
+lh500$Box.test
 # round(log(length(lh))) = 4 
 # Default Box.test.lag = min(5+1, 4) = 6, 
 # so df = 1;  without the min(5+1, ...), it would be -1.  
+lh500$Box.test$method # lag = 6 
 
 lh101 <- ARIMA(lh, order = c(1,0,1))
 lh101$Box.test
@@ -197,7 +196,7 @@ lh101$Box.test
 USAccD011 <- ARIMA(USAccDeaths, order = c(0,1,1),
                    seasonal = list(order=c(0,1,1)))
 USAccD011$Box.test
-# df = log(length(USAccDeaaths)) - 2:  
+# df = round(log(length(USAccDeaths))) - 2:  
 # correct 'df' with nonstationary 'seasonal' as well 
 
 LakeH200 <- ARIMA(LakeHuron, order = c(2,0,0),

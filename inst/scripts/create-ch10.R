@@ -71,7 +71,7 @@ str(d.hkja)
 ##     (including dividends) 
 ##
 readLines(ch10.[4], 4)
-m.pfe6503 <- read.zoo(ch10.[4], format="%Y%m%d",
+m.pfe6503 <- read.yearmon(ch10.[4], format="%Y%m%d",
       col.names=c("date", "return"))
 
 ##
@@ -80,7 +80,7 @@ m.pfe6503 <- read.zoo(ch10.[4], format="%Y%m%d",
 ##     (including dividends)
 ##
 readLines(ch10.[5], 4)
-m.mrk6503 <- read.zoo(ch10.[5], format="%Y%m%d",
+m.mrk6503 <- read.yearmon(ch10.[5], format="%Y%m%d",
        col.names=c("date","return"))
 
 ##
@@ -88,11 +88,12 @@ m.mrk6503 <- read.zoo(ch10.[5], format="%Y%m%d",
 ##     Monthly returns of IBM and S&P 500
 ##
 readLines(ch10.[6], 4)
-m.ibmsp2699 <- read.zoo(ch10.[6], format="%Y%m%d",
+m.ibmsp2699 <- read.yearmon(ch10.[6], format="%Y%m%d",
            col.names=c("date", "IBM", "SP"))
 m.ibmsp2699[1:3,]
 m.ibmsp2699ln[1:3,]
 all.equal(m.ibmsp2699, m.ibmsp2699ln[, 1:2])
+# problems ...
 str(m.ibmsp2699)
 str(m.ibmsp2699ln)
 all.equal(coredata(m.ibmsp2699), coredata(m.ibmsp2699ln[, 1:2]))
@@ -102,6 +103,7 @@ all.equal(as.numeric(m.ibmsp2699[,1]),
 all.equal(as.numeric(m.ibmsp2699[,2]),
           as.numeric(m.ibmsp2699ln[, 2]))
 # TRUE
+# OK
 
 ##
 ## 7-9.  ibmsp-ex92.rats, ibmsp-ex92q.rats, ibmsp-choles.rats
@@ -147,3 +149,9 @@ sel10 <- c(1, 4:5, 10)
 for(i in sel10)
   save(list=ch10.datNames[i], file=ch10.rda[i])
 
+#######################
+# fix changes made after writing as.yearmon2 and read.yearmon
+
+m.obj10 <- 4:5
+for(i in m.obj10)
+  save(list=ch10.datNames[i], file=ch10.rda[i])

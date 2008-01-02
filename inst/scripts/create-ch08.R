@@ -76,8 +76,10 @@ str(m.ibm.)
 m.ibmTime <- index(m.ibmsp2699)
 str(m.ibmTime)
 
-m.ibmsp2699ln <- zoo(m.ibm., m.ibmTime)
+m.ibmsp2699ln <- zoo(m.ibm., as.yearmon2(m.ibmTime))
 str(m.ibmsp2699ln)                         
+m.ibmsp2699ln[1:2, ]
+index(m.ibmsp2699ln)[1:2]
                         
 ##
 ## 4.  sca-ex-ch8.txt 
@@ -207,6 +209,8 @@ str(sp5may)
 ## 11.  Write the data files
 ##
 
+save(m.ibmsp2699ln, file="m.ibmsp2699ln.rda")
+
 ch08.rda <- paste(ch08.datNames, "rda", sep=".")
 
 sel8 <- c(6:7, 9:10)
@@ -215,3 +219,6 @@ for(i in sel8)
   save(list=ch08.datNames[i], file=ch08.rda[i])
 
 save(m.ibmsp2699ln, file="m.ibmsp2699ln.rda")
+
+############################
+            
