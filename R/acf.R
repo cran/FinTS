@@ -1,13 +1,14 @@
-acf <- function(x, lag.max = NULL,
+Acf <- function(x, lag.max = NULL,
          type = c("correlation", "covariance", "partial"),
          plot = TRUE, na.action = na.fail, demean = TRUE, ...){
-  ACF <- stats:::acf(x, lag.max = lag.max, type=type, 
+  ACF <- acf(x, lag.max = lag.max, type=type, 
          plot = FALSE, na.action = na.action, demean = demean, ...)
+  class(ACF) <- c("Acf", class(ACF))
   if(plot)plot(ACF, ...)
   invisible(ACF)
 }
 
-plot.acf <- function(x, ci = 0.95, type = "h", xlab = "Lag", ylab = NULL,
+plot.Acf <- function(x, ci = 0.95, type = "h", xlab = "Lag", ylab = NULL,
           ylim = NULL, main = NULL,
           ci.col = "blue", ci.type = c("white", "ma"),
           max.mfrow = 6, ask = Npgs > 1 && dev.interactive(),
@@ -15,7 +16,7 @@ plot.acf <- function(x, ci = 0.95, type = "h", xlab = "Lag", ylab = NULL,
           oma = if(nser > 2) c(1,1.2,1,1) else par("oma"),
           mgp = if(nser > 2) c(1.5,0.6,0) else par("mgp"),
           xpd = par("xpd"), cex.main = if(nser > 2) 1 else par("cex.main"),
-          verbose = getOption("verbose"), acfLag0=TRUE, 
+          verbose = getOption("verbose"), acfLag0=FALSE, 
           ...){
     ci.type <- match.arg(ci.type)
     if((nser <- ncol(x$lag)) < 1)stop("x$lag must have at least 1 column")

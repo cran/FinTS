@@ -27,13 +27,19 @@ data(m.intc7303)
 ml.intc <- log(1+m.intc7303)
 
 op <- par(mfcol=c(2,2))
-acf(as.numeric(ml.intc), main="(a) Log returns", ylim=c(-.2, .4), acfLag0=FALSE)
-acf(as.numeric(ml.intc)^2, main="(b) Squared log returns", ylim=c(-.2, .4),
-    acfLag0=FALSE)
-acf(abs(as.numeric(ml.intc)), main="(c) Absolute log returns", ylim=c(-.2, .4),
-    acfLag0=FALSE) 
-pacf(as.numeric(ml.intc)^2, main="(b) Squared log returns", ylim=c(-.2, .4))
+Acf(as.numeric(ml.intc), main="(a) Log returns")
+Acf(as.numeric(ml.intc)^2, main="(b) Squared log returns")
+Acf(abs(as.numeric(ml.intc)), main="(c) Absolute log returns") 
+pacf(as.numeric(ml.intc)^2, main="(b) Squared log returns")
+par(op)
+# adjust ylim = c(-.2, .4)
+op <- par(mfcol=c(2,2))
+Acf(as.numeric(ml.intc), main="(a) Log returns", ylim = c(-.2, .4))
+Acf(as.numeric(ml.intc)^2, main="(b) Squared log returns", ylim = c(-.2, .4))
+Acf(abs(as.numeric(ml.intc)), main="(c) Absolute log returns", ylim = c(-.2, .4)) 
+pacf(as.numeric(ml.intc)^2, main="(b) Squared log returns", ylim = c(-.2, .4))
 par(op) 
+
 
 # p. 101 
 ##
@@ -70,7 +76,7 @@ par(op)
 # Figure 3.3
 
 op <- par(mfrow=c(2,1))
-acf(exch.perc, ylim=c(-.1, .1), main="(a) Sample ACF", acfLag0=FALSE)
+Acf(exch.perc, ylim=c(-.1, .1), main="(a) Sample ACF")
 
 pacf(exch.perc^2, ylim=c(-.1, .1),
      main="(b) Partial ACF of the squared series")
@@ -109,9 +115,7 @@ summary(arch3.fit)
 ##??????????????
 
 library(fGarch)
-arch3.Fit <- garchFit(~garch(3, 0), data=ml.intc)
-
-arch3.Fit <- garchFit(~garch(3, 0), data=as.numeric(ml.intc))
+#arch3.Fit <- garchFit(~garch(3, 0), data=ml.intc)
 
 ##??????????????
 ##
@@ -159,7 +163,7 @@ abline(h=0, lty="dashed")
 
 # Figure 3.6 
 op <- par(mfrow=c(2,1))
-acf(sp500, lag.max=30, main="(a)", acfLag0=FALSE)
+Acf(sp500, lag.max=30, main="(a)")
 pacf(sp500^2, main="(b)")
 par(op)
 
@@ -193,8 +197,8 @@ par(op)
 # p. 119
 # Figure 3.8
 op <- par(mfrow=c(2,1))
-acf(std.res, ylim=c(-.2, .2), main="(a)", lag.max=24, acfLag0=FALSE)
-acf(std.res^2, ylim=c(-.2, .2), main="(b)", lag.max=24, acfLag0=FALSE)
+Acf(std.res, ylim=c(-.2, .2), main="(a)", lag.max=24)
+Acf(std.res^2, ylim=c(-.2, .2), main="(b)", lag.max=24)
 par(op)
 
 AutocorTest(std.res, 12)

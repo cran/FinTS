@@ -28,10 +28,17 @@ data(m.ibm2697)
 str(m.ibm2697)
 quantile(as.numeric(m.ibm2697))
 op <- par(mfrow=c(2,1))
-acf(m.ibm2697, ylim=c(-.2, .2), lag.max=100,
-    main="(a) Simple returns", acfLag0=FALSE)
-acf(log(1+m.ibm2697), ylim=c(-.2, .2), lag.max=100,
-    main="(b) Log returns", acfLag0=FALSE)
+Acf(m.ibm2697, lag.max=100,
+    main="(a) Simple returns")
+Acf(log(1+m.ibm2697), lag.max=100,
+    main="(b) Log returns")
+par(op)
+# To match the y axis limits, add ylim=c(-.2, .2)
+op <- par(mfrow=c(2,1))
+Acf(m.ibm2697, lag.max=100, ylim=c(-.2, .2), 
+    main="(a) Simple returns")
+Acf(log(1+m.ibm2697), lag.max=100, ylim=c(-.2, .2), 
+    main="(b) Log returns")
 par(op)
 
 Box.test(m.ibm2697, 5, "Ljung-Box")
@@ -51,10 +58,8 @@ AutocorTest(log(1+m.ibm2697), 10)
 #              of the value weighted index, Jan. 1926 - Jan. 1997 
 data(m.vw2697)
 op <- par(mfrow=c(2, 1))
-acf(m.vw2697, ylim=c(-.2, .2), lag.max=100,
-    main="(a) Simple returns", acfLag0=FALSE)
-acf(log(1+m.vw2697), ylim=c(-.2, .2), lag.max=100,
-    main="(b) Log returns", acfLag0=FALSE)
+Acf(m.vw2697, lag.max=100, main="(a) Simple returns")
+Acf(log(1+m.vw2697), lag.max=100, main="(b) Log returns")
 par(op)
 
 # R function in stats package 
@@ -301,8 +306,7 @@ str(m.ibmvwewsp2603)
 op <- par(mfrow=c(2,1))
 plot(m.ibmvwewsp2603[, "EW"], main="(a) Monthly simple returns",
      xlab="year", ylab="s-rtn")
-acf(as.numeric(m.ibmvwewsp2603[, "EW"]), ylim=c(-.4, .4),
-    main="(b) Sample ACF", acfLag0=FALSE)
+Acf(as.numeric(m.ibmvwewsp2603[, "EW"]), main="(b) Sample ACF")
 par(op)
 
 # p. 54
@@ -343,7 +347,8 @@ quantile(m.3m4697)
 
 op <- par(mfrow=c(2,1))
 plot(log(1+m.3m4697), xlab="year", ylab="l-rtn")
-
+# Figure 2.9 has the noninformative spike at lag 0 
+# so use 'acf' rather than 'Acf' 
 acf(as.numeric(m.3m4697), main="")
 par(op)
 
@@ -384,8 +389,7 @@ op <- par(mfcol=c(2,2))
 plot(log(q.gdp4703), xlab="year", ylab="ln(GDP)",
      main="(a)")
 
-acf(log(q.gdp4703), lag.max=16, main="(b)",
-    xlab="lag (years)")
+Acf(log(q.gdp4703), lag.max=16, main="(b)", xlab="lag (years)")
 
 #plot(diff(q.gdp4703), xlab="year", ylab="diff(GDP)", main="(c)")
 # This is clearly NOT Figure 2.20.  
@@ -478,7 +482,8 @@ plot(log(q.jnj), xlab="year", ylab="ln-earnings",
 par(op)
 
 # p. 74
-# Figure 2.14.  
+# Figure 2.14.
+# all plots have the unit spike at lag 0, so use 'acf' not 'Acf'
 op <- par(mfcol=c(2,2))
 acf(log(q.jnj))
 acf(diff(log(q.jnj)), main="Series:  dx")
@@ -525,8 +530,8 @@ op <- par(mfcol=c(2,2))
 plot(m.decile1510[,"Decile1"], xlab="year", ylab="s-rtn",
      main="(a) Simple returns")
 
-acf(as.numeric(m.decile1510[,"Decile1"]), lag.max=36,
-    main="(b) Sample ACF", acfLag0=FALSE)
+Acf(as.numeric(m.decile1510[,"Decile1"]), lag.max=36,
+    main="(b) Sample ACF")
 
 #fit.dec1 <- arima(m.decile1510[, "Decile1"], c(1, 0, 0),
 #                  seasonal=list(order=c(1, 0, 1), period=12))
@@ -549,7 +554,7 @@ fit.dec1
 # The parameter estimates here are likely
 # slightly more accurate than those in the book.
 
-str(fit.dec1)
+#str(fit.dec1)
 # Find attribute 'sigma2'
 # via 'str' or reading help('arima')
 sqrt(fit.dec1$sigma2)
@@ -574,7 +579,7 @@ rtn.jan <- residuals(fitJan)
 plot(rtn.jan, xlab="year", ylab="rtn - jan",
      main="(c) January-adjusted returns")
 
-acf(as.numeric(rtn.jan), main="(d) Sample ACF", acfLag0=FALSE)
+Acf(as.numeric(rtn.jan), main="(d) Sample ACF")
 
 par(op)
 
@@ -614,7 +619,7 @@ op <- par(mfrow=c(2,1))
 plot(index(w.gs1n3), naive.resids, type="l",
      xlab='year', ylab='residual', main='(a)')
 
-acf(naive.resids, main='(b)')
+Acf(naive.resids, main='(b)')
 par(op)
 
 naiveFit.d.gs <- lm(gs3~gs1, as.data.frame(dw.gs1n3))
@@ -718,16 +723,33 @@ sum(is.na(abs.VW))
 # 0
 abs.VW. <- as.ts(abs.VW)
 str(abs.VW.)
-# 12966 obs ... 
-acf(as.numeric(abs.VW), lag.max=400, ylim=c(-.1, .4),
-    main="ACF of absolute returns of value-weighted index", acfLag0=FALSE)
-# Matches Figure 2.22(a) 
-acf(abs.VW, lag.max=400, ylim=c(-.1, .4), na.action=na.pass)
+# 12966 obs ...
+Acf(as.numeric(abs.VW), lag.max=400,
+    main="ACF of absolute returns of value-weighted index")
+# Matches Figure 2.22(a)
+
+Acf(abs.VW, lag.max=400, na.action=na.pass)
 # Different from Figure 2.22(a):
 # This assumes we have 365.24 days/year,
 # with NAs for weekends and holidays.
 # Figure 2.22(a) ignores weekends and holidays,
 # assuming that Monday follows Friday (except when there is a holiday).
 
-acf(as.numeric(abs(d.CRSP6297[, "EW"])), lag.max=400, ylim=c(-.1, .4),
-    main="ACF of absolute returns of equal-weighted index", acfLag0=FALSE)
+Acf(as.numeric(abs(d.CRSP6297[, "EW"])), lag.max=400, 
+    main="ACF of absolute returns of equal-weighted index")
+
+op <- par(mfrow=c(2,1))
+Acf(as.numeric(abs.VW), lag.max=400, ylim=c(-.1, .4), 
+    main="ACF of absolute returns of value-weighted index")
+# Matches Figure 2.22(a)
+
+#Acf(abs.VW, lag.max=400, na.action=na.pass)
+# Different from Figure 2.22(a):
+# This assumes we have 365.24 days/year,
+# with NAs for weekends and holidays.
+# Figure 2.22(a) ignores weekends and holidays,
+# assuming that Monday follows Friday (except when there is a holiday).
+
+Acf(as.numeric(abs(d.CRSP6297[, "EW"])), lag.max=400, ylim=c(-.1, .4), 
+    main="ACF of absolute returns of equal-weighted index")
+par(op)

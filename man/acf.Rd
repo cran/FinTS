@@ -1,6 +1,6 @@
-\name{acf}
-\alias{acf}
-\alias{plot.acf}
+\name{Acf}
+\alias{Acf}
+\alias{plot.Acf}
 \title{
 Autocorrelation Function 
 }
@@ -9,10 +9,10 @@ Autocorrelation Function
   0. 
 }
 \usage{
-     acf(x, lag.max = NULL,
+     Acf(x, lag.max = NULL,
          type = c("correlation", "covariance", "partial"),
          plot = TRUE, na.action = na.fail, demean = TRUE, ...)
-\method{plot}{acf}(x, ci = 0.95, type = "h", xlab = "Lag", ylab = NULL,
+\method{plot}{Acf}(x, ci = 0.95, type = "h", xlab = "Lag", ylab = NULL,
           ylim = NULL, main = NULL,
           ci.col = "blue", ci.type = c("white", "ma"),
           max.mfrow = 6, ask = Npgs > 1 && dev.interactive(),
@@ -20,12 +20,12 @@ Autocorrelation Function
           oma = if(nser > 2) c(1,1.2,1,1) else par("oma"),
           mgp = if(nser > 2) c(1.5,0.6,0) else par("mgp"),
           xpd = par("xpd"), cex.main = if(nser > 2) 1 else par("cex.main"),
-          verbose = getOption("verbose"), acfLag0=TRUE, 
+          verbose = getOption("verbose"), acfLag0=FALSE, 
           ...)
 }
 \arguments{
   These functions are provided to make it easy to plot an
-  autocorrelation function without the noninformative unit spike at lag
+  autocorrelation function without the noninformative unit spike at lag 
   0.  This is done by calling plot(x, acfLag0=FALSE, ...).  Apart from
   the 'acfLag0' argument, the rest of the arguments are identical to
   those for 'acf' and 'plot.acf'.  
@@ -69,10 +69,10 @@ Autocorrelation Function
 
 }
 \value{
-  The 'acf' function returns an object of class 'acf' as described with
-  help('acf', package='stats').
+  The 'acf' function returns an object of class 'Acf', which inherits
+  from class 'acf', as described with help('acf', package='stats').
 
-  The 'plot.acf' function returns NULL.  
+  The 'plot.Acf' function returns NULL.  
 }
 \author{
   Spencer Graves for the FinTS modification of 'plot.acf'.  
@@ -88,8 +88,8 @@ Autocorrelation Function
 }
 \examples{
 data(m.ibm2697)
-acf(m.ibm2697, acfLag0=FALSE)
-acf(m.ibm2697, lag.max=100, acfLag0=FALSE)
+Acf(m.ibm2697)
+Acf(m.ibm2697, lag.max=100)
 
 }
 \keyword{ts}
