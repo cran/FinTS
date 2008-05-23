@@ -1,3 +1,4 @@
+### ch. 4.  Nonlinear models and their applications 
 ###
 ### 
 ### Ruey S. Tsay (2005)
@@ -5,10 +6,6 @@
 ### (Wiley)
 ###
 ### 
-
-###
-### ch. 4.  Nonlinear models and their applications 
-###
 library(FinTS)
 # p. 154
 
@@ -26,7 +23,7 @@ str(m.ibmvwewsp2603)
 
 ew2697 <- window(m.ibmvwewsp2603[, "VW"], end=yearmon(1997+11/12))
 str(ew2697)
-# correct number of observations.  
+# correct number of observations.
 
 #??? Need code for bilinear estimation.
 
@@ -54,6 +51,7 @@ str(m.unrate)
 
 (unrateARIMA <- arima(m.unrate, c(2, 1, 2),
                      seasonal=list(order=c(1,0,1), period=12)))
+# good match to (4.10) 
 str(unrateARIMA)
 sqrt(unrateARIMA$sigma2)
 
@@ -82,3 +80,22 @@ data(m.unrate)
 unTAR <- setar(diff(m.unrate), 12, th=0.1)
 unTAR
 summary(unTAR)
+
+# p. 161
+# example 4.3
+data(d.ibmvwewsp6203)
+str(d.ibmvwewsp6203)
+# correct number of observations
+
+quantile(coredata(d.ibmvwewsp6203[, "IBM"]))
+#         0%        25%        50%        75%       100% 
+#-0.2296300 -0.0083800  0.0000000  0.0088075  0.1316400 
+l.ibm <- log(1+d.ibmvwewsp6203[, "IBM"])
+quantile(coredata(l.ibm))
+#         0%         25%         50%         75%        100% 
+#-0.26088436 -0.00841531  0.00000000  0.00876894  0.12366791
+
+library(fGarch) 
+fit2.garch1.1 <- garchFit(~arma(2,0)+garch(1,1), coredata(l.ibm) ) 
+fit2.garch1.1
+                          

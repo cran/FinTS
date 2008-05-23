@@ -1,4 +1,5 @@
-##
+### ch. 3.  Conditional Heteroscedastic Models 
+###
 ### 
 ### Ruey S. Tsay (2005)
 ### Analysis of Financial Time Series, 2nd ed.
@@ -7,9 +8,6 @@
 ### 
 
 # p. 97
-###
-### ch. 3.  Conditional Heteroscedastic Models 
-###
 library(FinTS)
 
 # p. 98 

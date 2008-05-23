@@ -54,13 +54,15 @@ findConjugates(c(1+1i, 0, 1-1i, 2-2i, 3, 2+2i, NA))
 
 # Testing with polyroot and solve(polynomial(...))
 set.seed(1234)
-p <- polynomial(sample(1:10, size=45, rep=TRUE)) # degree 44
-z <- solve(p)
-findConjugates(z, complex.eps=.Machine$double.eps)
+if(require(polynomial)){
+  p <- polynomial(sample(1:10, size=45, rep=TRUE)) # degree 44
+  z <- solve(p)
+  findConjugates(z, complex.eps=.Machine$double.eps)
 # this identifies all 21 conjugate pairs, R 2.6.0 for Windows
 
 z1 <- polyroot(p)
 findConjugates(z1, complex.eps=.Machine$double.eps)
 # this only identifies only 3 conjugate pairs, R 2.6.0 for Windows
+}
 }
 \keyword{arith}

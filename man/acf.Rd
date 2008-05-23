@@ -90,6 +90,7 @@ Autocorrelation Function
 data(m.ibm2697)
 Acf(m.ibm2697)
 Acf(m.ibm2697, lag.max=100)
-
+Acf(m.ibm2697, lag.max=100,
+         main='Monthly IBM returns, 1926-1997')
 }
 \keyword{ts}

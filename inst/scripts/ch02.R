@@ -1,3 +1,4 @@
+### ch. 2.  Linear Time Series Analysis and Its Applications 
 ###
 ### 
 ### Ruey S. Tsay (2005)
@@ -5,10 +6,6 @@
 ### (Wiley)
 ###
 ### 
-
-###
-### ch. 2.  Linear Time Series Analysis and Its Applications 
-###
 library(FinTS)
 # p. 24
 

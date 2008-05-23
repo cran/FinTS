@@ -3,12 +3,17 @@ Unitroot <- function(x, trend=c("c", "nc", "ct"), method=c('adf', 'McKinnon'),
   type <- match.arg(trend)
   mtd <- match.arg(method)
   lag <- max(1, lags-1)
-#  
-  urtest <- {
-    if(mtd=="adf")
-      adfTest(x, lags=lag, type=type)
+#
+  {
+    if(require('fUnitRoots'))
+      urtest <- {
+        if(mtd=="adf")
+          adfTest(x, lags=lag, type=type)
+        else
+          unitrootTest(x, lags=lag, type=type)
+      }
     else
-      unitrootTest(x, lags=lag, type=type)
+      stop('require(fUnitRoots);  not available.')
   }
   urtest@call <- match.call()
 #  urtest@data.name <- deparse(substitute(x))

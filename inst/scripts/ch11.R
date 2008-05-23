@@ -1,13 +1,10 @@
+### ch. 11 State Space Models and Kalman Filter
 ###
 ### 
 ### Ruey S. Tsay (2005)
 ### Analysis of Financial Time Series, 2nd ed.
 ### (Wiley)
 ###
-### 
-
-###
-### ch. 11 State Space Models and Kalman Filter
 ###
 library(FinTS)
 

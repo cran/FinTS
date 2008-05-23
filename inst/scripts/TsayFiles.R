@@ -1,7 +1,5 @@
-####
-####
-#### Read the text from the web site for the book
-#### and create 'TsayFiles' list and subdirectory.
+#### Read the text from the web site for the book and create 'TsayFiles'
+#### list and subdirectory.
 ####
 ####
 

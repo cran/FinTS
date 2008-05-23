@@ -1,3 +1,4 @@
+### ch. 1.  Financial Time Series and Their Characteristics
 ###
 ### 
 ### Ruey S. Tsay (2005)
@@ -5,10 +6,6 @@
 ### (Wiley)
 ###
 ### 
-
-###
-### ch. 1.  Financial Time Series and Their Characteristics
-###
 library(FinTS)
 
 ##

@@ -1,10 +1,8 @@
-library(FinTS)
-data(TsayFiles)  
-####
-####
 #### Create the data objects used in chapter 2 
 ####
 ####
+library(FinTS)
+data(TsayFiles)  
 
 ##
 ## 0.  TsayFiles directory 

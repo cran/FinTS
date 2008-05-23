@@ -1,10 +1,8 @@
-library(FinTS)
-data(TsayFiles)  
-####
-####
 #### Create the data objects used in chapter 12 
 ####
 ####
+library(FinTS)
+data(TsayFiles)  
 
 #*** Thanks to Gabor Grothendieck and Diethelm Wuertz
 #*** for help with how to process dates and times 

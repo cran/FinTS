@@ -175,3 +175,143 @@ corr.ind <- cov2cor(cov.ind)
 print(corr.ind, digits = 1, width = 2)
 
 
+##
+# 9.4 Principal Component Analysis
+##
+
+# page 423
+
+data(m.5cln)
+rtn <- m.5cln
+round(rtn[1,], 2)
+round(colMeans(rtn), 2)
+round(cov(rtn), 2)
+round(cor(rtn), 2)
+eigen(cor(rtn))
+
+# Figure 9.4 on page 423
+
+plot(rtn, nc = 1)
+
+# table 9.3 on page 425
+
+# eigenvalues and eigenvectors
+# Eigenvectors are only determined up to scale so the ratio of any
+# eigenvector to the one shown in the book should be constant.
+
+e.cov <- eigen(cov(rtn))
+prop.cov <- prop.table(e.cov$values)
+t(cbind(Eigenvalue = e.cov$values, Proportion = prop.cov, 
+    Cumulative = cumsum(prop), e.cov$vectors))
+
+e.cor <- eigen(cor(rtn))
+prop.cor <- prop.table(e.cor$values)
+t(cbind(Eigenvalue = e.cor$values, Proportion = prop.cor, 
+    Cumulative = cumsum(prop), e.cov$vectors))
+
+pca.cor <- princomp(rtn, cor = TRUE)
+pca.cor$sdev^2 # eigenvalues
+pca.cor$loadings # columns are eigenvectors
+
+# page 425
+pca.cov <- princomp(rtn)
+names(pca.cov)
+summary(pca.cov)
+pca.cov$loadings
+screeplot(pca.cov, type = "l")
+
+pca.cor <- princomp(rtn, cor = TRUE)
+names(pca.cor)
+summary(pca.cor)
+pca.cor$loadings
+screeplot(pca.cor, type = "l")
+
+##
+# 9.5 - Statistical Factor Analysis
+##
+
+# example 9.3 on pages 431-433 
+# Note reference in text to example 9.2 should read 8.2
+
+data(m. bnd)
+cor(m.bnd)
+
+# the next 4 give PC unrotated factor loadings as in table 9.5
+
+# e$vec is normalized so that its length is 1.  Multiply that
+# by sqrt of eigenvalue and multiply each column by -1 if needed
+# to keep diagonal elements +ve.
+e <- eigen(cor(m.bnd))
+scale(e$vec, center = FALSE, scale = sign(diag(e$vec))/sqrt(e$val))[, 1:2]
+
+# same
+e <- eigen(cor(m.bnd))
+e$vec %*% diag(sign(diag(e$vec)) * sqrt(e$val))
+
+# same
+p <- princomp(m.bnd, cor = TRUE)
+ld <- loadings(p)  # these are eigenvectors
+scale(ld, center = FALSE, scale = sign(diag(ld)) / p$sdev) 
+
+# same
+p <- princomp(m.bnd, cor = TRUE, center = FALSE) 
+ld <- loadings(p)  # these are eigenvectors
+ld %*% diag(sign(diag(ld)) * p$sdev)
+
+# Variances
+colSums(ld^2)
+
+# Proportion Variances
+colMeans(ld^2)
+
+# cumumalative proportion variances
+cumsum(colMeans(ld^2))
+
+# this gives the same results as upper portion of Table 9.5
+# First factor.pa gives unrotated and second factor.pa gives rotated
+library(psych)
+bnd.fac <- factor.pa(m.bnd, nfactors = 2, rot = "none", max.iter = 1)
+bnd.fac
+bnd.fac <- factor.pa(m.bnd, nfactors = 2, max.iter = 1)
+bnd.fac
+
+# commonalities -- result does not depend on rotation
+rowSums(loadings(bnd.fac)[, 1:2]^2)
+
+# NOTE !!!
+# this does not give same result as lower left portion of Table 9.5
+factanal(m.bnd, factors = 2, rotation = "none")
+# but this does give same results as lower right portion of Table 9.5
+factanal(m.bnd, factors = 2)
+
+# commonalities -- result does not depend on rotation
+rowSums(loadings(bnd.fac)[, 1:2]^2)
+
+# example 9.4 page 433
+data(m.barra.9003)
+rtn <- m.barra.9003
+stat.fac <- factanal(rtn, factors = 2)
+stat.fac
+names(stat.fac)
+
+stat.fac <- factanal(rtn, factors = 3)
+stat.fac
+
+# Figure 9.6 on page 435
+# plot top n loadings of the first k factors
+plot(loadings(stat.fac))
+
+# bottom of page 434
+library(GPArotation)
+stat.fac2 <- quartimax(loadings(stat.fac), normalize = TRUE)
+round(loadings(stat.fac2), 3)
+
+# page 435
+factor.real <- factanal(rtn, scores = "Bartlett", factors = 3)$scores
+print(stat.fac$correlation, digits = 1, width = 2)
+
+##
+# 9.6 - Asymptotic Principal Component Analysis
+##
+
+
