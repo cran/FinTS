@@ -154,8 +154,8 @@ print(corr.rtn, digit = 1, width = 2)
 # code on page 418
 # F.hat.o <- solve(crossprod(ind.dum)) %*% t(ind.dum) %*% t(rtn.rm)
 # E.hat.o <- t(rtn.rm) - ind.dum %*% F.hat.o
-F.hat.o <- lm(rtn.rm ~ ind.dum - 1)
-E.hat.o <- resid(F.hat.o.2)
+F.hat.o <- lm(t(rtn.rm) ~ ind.dum - 1)
+E.hat.o <- resid(F.hat.o)
 
 diagD.hat.o <- apply(E.hat.o, 1, var)
 
@@ -166,7 +166,7 @@ F.hat.g <- Hmtx %*% t(rtn.rm)
 F.hat.gt <- t(F.hat.g)
 E.hat.g <- t(rtn.rm) - ind.dum %*% F.hat.g
 diagD.hat.g <- apply(E.hat.g, 1, var)
-t(Hmtx)
+print(t(Hmtx), digit = 4)
 
 cov.ind <- ind.dum %*% var(F.hat.gt) %*% t(ind.dum) + diag(diagD.hat.g)
 # sd.ind <- sqrt(diag(cov.ind))
@@ -202,12 +202,12 @@ plot(rtn, nc = 1)
 e.cov <- eigen(cov(rtn))
 prop.cov <- prop.table(e.cov$values)
 t(cbind(Eigenvalue = e.cov$values, Proportion = prop.cov, 
-    Cumulative = cumsum(prop), e.cov$vectors))
+    Cumulative = cumsum(prop.cov), e.cov$vectors))
 
 e.cor <- eigen(cor(rtn))
 prop.cor <- prop.table(e.cor$values)
 t(cbind(Eigenvalue = e.cor$values, Proportion = prop.cor, 
-    Cumulative = cumsum(prop), e.cov$vectors))
+    Cumulative = cumsum(prop.cor), e.cov$vectors))
 
 pca.cor <- princomp(rtn, cor = TRUE)
 pca.cor$sdev^2 # eigenvalues
@@ -233,7 +233,7 @@ screeplot(pca.cor, type = "l")
 # example 9.3 on pages 431-433 
 # Note reference in text to example 9.2 should read 8.2
 
-data(m. bnd)
+data(m.bnd)
 cor(m.bnd)
 
 # the next 4 give PC unrotated factor loadings as in table 9.5
@@ -270,9 +270,9 @@ cumsum(colMeans(ld^2))
 # this gives the same results as upper portion of Table 9.5
 # First factor.pa gives unrotated and second factor.pa gives rotated
 library(psych)
-bnd.fac <- factor.pa(m.bnd, nfactors = 2, rot = "none", max.iter = 1)
+bnd.fac <- factor.pa(m.bnd, nfactors = 2, rot = "none")
 bnd.fac
-bnd.fac <- factor.pa(m.bnd, nfactors = 2, max.iter = 1)
+bnd.fac <- factor.pa(m.bnd, nfactors = 2)
 bnd.fac
 
 # commonalities -- result does not depend on rotation
@@ -313,5 +313,16 @@ print(stat.fac$correlation, digits = 1, width = 2)
 ##
 # 9.6 - Asymptotic Principal Component Analysis
 ##
+
+# page 438
+data(m.apca0103)
+M.apca0103 <- xtabs(return ~ date + CompanyID, m.apca0103)
+nf1 <- apca(M.apca0103, 1)
+nf6 <- apca(M.apca0103, 6)
+
+# screeplot - Figure 9.7 on page 439
+prop <- prop.table(nf6$eig)[1:7]
+bp <- barplot(prop, ylim = c(0, .5))
+text(bp, prop, round(prop, 3), pos = 3)
 
 
