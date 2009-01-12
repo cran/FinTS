@@ -24,7 +24,9 @@ Date: \tab 2008-05-23\cr
 License: \tab GPL (>= 2)\cr
 URL: \tab http://www.r-project.org\cr
 Depends: \tab zoo, graphics\cr
-Suggests: \tab fCalendar, moments, distrEx, tseries, urca, uroot, lmtest, sandwich, psych, GPArotation, fUtilities, chron, polynom, fUnitRoots, e1071\cr
+Suggests: \tab fCalendar, moments, distrEx, tseries, urca,
+  lmtest, sandwich, psych, GPArotation, fUtilities, chron,
+  polynom, fUnitRoots, e1071\cr
 Packaged: \tab Sat May 24 11:32:56 2008; spencerg\cr
 Built: \tab R 2.7.0; ; 2008-05-24 11:36:17; windows\cr
 }
@@ -75,7 +77,6 @@ Maintainer: Spencer Graves <spencer.graves@prodsyse.com>
   \url{
     http://faculty.chicagogsb.edu/ruey.tsay/teaching/fts2
   }
-~~ \code{\link[<pkg>:<pkg>-package]{<pkg>}} ~~
 }
 \examples{
 # Where is the 'FinTS' directory?

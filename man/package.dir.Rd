@@ -68,7 +68,7 @@ package.dir(package='base', lib.loc=NULL,
 }
 \seealso{
   \code{\link[base]{system.file}}
-  \code{\link[base]{dir}}
+  \code{\link{dir}}
   \code{\link[base]{file.path}}
 }
 \examples{

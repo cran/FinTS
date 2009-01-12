@@ -45,7 +45,7 @@ AutocorTest(x, lag=ceiling(log(length(x))),
 \details{
   This is provided for compatibility with 'autocorTest' in the S-Plus
   script in Tsay (p. 30).  It is a wrapper for the R function
-  \code{\link[stats]{Box.test}}.
+  \code{\link{Box.test}}.
 }
 \value{
   a list of class 'htest' containing the following components:
@@ -81,7 +81,7 @@ AutocorTest(x, lag=ceiling(log(length(x))),
   2007.12.29.
 }
 \seealso{
-  \code{\link[stats]{Box.test}}
+  \code{\link{Box.test}}
   \code{\link{ARIMA}}
 }
 \examples{

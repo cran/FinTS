@@ -161,7 +161,7 @@ ARIMA(x, order = c(0, 0, 0),
 \author{
   Spencer Graves for the \code{ARIMA{FinTS}} wrapper for
   \code{\link[stats]{arima}}, written by the R Core Team, and
-  \code{\link[stats]{Box.text}}, written by A. Trapletti.  John Frain
+  \code{\link{Box.test}}, written by A. Trapletti.  John Frain
   provided the citation to a proof in Brockwell and Davis (1990) that
   the degrees of freedom for the approximating chi-square distribution
   of the Ljung-Box statistic should be adjusted for the number of
@@ -170,7 +170,7 @@ ARIMA(x, order = c(0, 0, 0),
 }
 \seealso{
   \code{\link[stats]{arima}}
-  \code{\link[stats]{Box.test}}
+  \code{\link{Box.test}}
   \code{\link[stats]{tsdiag}}
 }
 \examples{

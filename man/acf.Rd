@@ -81,7 +81,7 @@ Autocorrelation Function
 \seealso{
   \code{\link[stats]{acf}}
   \code{\link[stats]{plot.acf}}
-  \code{\link[stats]{Box.test}}
+  \code{\link{Box.test}}
   \code{\link{AutocorTest}}
 }
 \examples{

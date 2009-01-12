@@ -35,7 +35,7 @@ Unitroot(x, trend=c("c", "nc", "ct"), method=c('adf', 'McKinnon'),
     the maximum number of lags used for error term correction.
 
     NOTE:  This is one more than the 'lags' argument used in 'adfTest',
-    'unitrootTest', 'ur.df', 'ADF.test' and 'ur.df'.  See the comparison
+    'unitrootTest', 'ADF.test' and 'ur.df'.  See the comparison
     in the examples.  The default was copied from 'ur.df' and
     'UnitrootTests', noting that the 'lags' argument for other R
     functions are one less than that of 'unitroot' in S-PLUS
@@ -49,8 +49,10 @@ Unitroot(x, trend=c("c", "nc", "ct"), method=c('adf', 'McKinnon'),
   }
 }
 \details{
-  There are 4 functions in different contributed packages in R for the
-  Augmented Dickey-Fuller test (as of 2007.12.11):
+%  There are 4 functions in different contributed packages in R for the
+%  Augmented Dickey-Fuller test (as of 2007.12.11):
+  There are 3 functions in different contributed packages in R for the
+  Augmented Dickey-Fuller test (as of 2009.08.24):
 
   \code{adf.test{tseries}} by A. Trapletti
 
@@ -59,7 +61,7 @@ Unitroot(x, trend=c("c", "nc", "ct"), method=c('adf', 'McKinnon'),
 
   \code{ur.df{urca}} by Bernhard Pfaff
 
-  \code{ADF.test{uroot}} by Javier Lopez-de-Lacalle
+%  \code{ADF.test{uroot}} by Javier Lopez-de-Lacalle
 
   This 'Unitroot' function and the companion 'summary.fHTEST' use
   'adfTest'. It is provided for partial compatibility with the S-PLUS
@@ -92,10 +94,9 @@ Unitroot(x, trend=c("c", "nc", "ct"), method=c('adf', 'McKinnon'),
 }
 \seealso{
   \code{\link[fUnitRoots]{UnitrootTests}}
-  \code{\link[fUnitRoots]{adfTest}}
-  \code{\link[fUnitRoots]{unitrootTest}}
-  \code{\link[ur.df]{urca}}
-  \code{\link[uroot]{ADF.test}}
+%  \code{\link{adfTest}}
+%  \code{\link{unitrootTest}}
+%  \code{\link[uroot]{ADF.test}}
   \code{\link[urca]{ur.df}}
 }
 \examples{
@@ -129,15 +130,15 @@ if(require(urca))ur.df(log(q.gdp4703), type='drift', lags=9)
 # The first is the ADF statistic on Tsay, p. 70.
 # It's not obvious what the second number is.
 
-##
-## Using ADF.test{uroot}
-##
-if(require(uroot)){
-   gdp.ts <- ts(log(q.gdp4703), frequency=4, start=c(1947,1))
-   ADF.test(gdp.ts, c(1,0,0), selectlags=list(mode=as.numeric(1:9)))
-#  Gives the ADF statistic on p. 71, but the p-value is wrong.
-}
-
+%##
+%## Using ADF.test{uroot}
+%##
+%if(require(uroot)){
+%   gdp.ts <- ts(log(q.gdp4703), frequency=4, start=c(1947,1))
+%   ADF.test(gdp.ts, c(1,0,0), selectlags=list(mode=as.numeric(1:9)))
+%#  Gives the ADF statistic on p. 71, but the p-value is wrong.
+%}
+%
 ##
 ## Using adf.test{tseries}
 ##

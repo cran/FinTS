@@ -3,12 +3,12 @@
 
 \title{
   Conditionally convert x to yearmon if the conversion is unqique,
-  retaining x as names.  
+  retaining x as names.
 }
 \description{
   Convert \code{x} to class \code{"yearmon"}.  If duplicate months are
   found, return \code{x}.  Otherwise, return the conversion with names =
-  \code{x}. 
+  \code{x}.
 }
 \usage{
 as.yearmon2(x, \dots)
@@ -19,7 +19,7 @@ as.yearmon2(x, \dots)
   }
   \item{\dots}{
     additional argument(s) (e.g., a format) passed to
-    \code{as.yearmon}.  
+    \code{as.yearmon}.
   }
 }
 \details{
@@ -31,16 +31,16 @@ as.yearmon2(x, \dots)
   If the \code{yearmon} form of the input is not uniqe,
   \code{as.yearmon2} returns the input unchanged with a warning.
   Otherwise, it returns the \code{yearmon} conversion with the input as
-  names. 
-  
+  names.
+
 }
 \value{
   Returns either its argument or its argument converted to class
-  \code{yearmon} with names.  
+  \code{yearmon} with names.
 }
 
 \seealso{
-  \code{\link[zoo]{as.yearmon}}
+  \code{\link[zoo]{yearmon}}
 }
 \examples{
 x1 <- as.Date(c("2000-01-01", "2000-01-01"))
@@ -51,7 +51,7 @@ as.yearmon2(x1)
 
 x2 <- as.Date(c("2000-01-01", "2000-02-01"))
 as.yearmon2(x2)
-# month of x2 with names x2 
+# month of x2 with names x2
 
 }
 \keyword{ts}
