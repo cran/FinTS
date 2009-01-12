@@ -3,6 +3,7 @@ export(Acf, apca, ArchTest, ARIMA, as.yearmon2, AutocorTest,
        package.dir, plotArmaTrueacf, read.yearmon, runscript,
        simple2logReturns, Unitroot, url2data)
 
+import(zoo)
 importFrom(graphics, plot)
 
 S3method(plot, Acf)
