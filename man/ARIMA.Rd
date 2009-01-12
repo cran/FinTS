@@ -2,7 +2,7 @@
 \alias{ARIMA}
 \title{ Arima with Ljung-Box }
 \description{
-  Fit an ARIMA model and test residuals with the Ljung-Box statistic 
+  Fit an ARIMA model and test residuals with the Ljung-Box statistic
 }
 \usage{
 ARIMA(x, order = c(0, 0, 0),
@@ -10,12 +10,12 @@ ARIMA(x, order = c(0, 0, 0),
      xreg = NULL, include.mean = TRUE, transform.pars = TRUE,
      fixed = NULL, init = NULL, method = c("CSS-ML", "ML", "CSS"),
      n.cond, optim.control = list(), kappa = 1e6, Box.test.lag=NULL,
-     Box.test.df = c("net.lag", "lag"), 
+     Box.test.df = c("net.lag", "lag"),
      type = c("Ljung-Box", "Box-Pierce", "rank"))
 }
 \arguments{
   \item{x}{
-    a univariate time series 
+    a univariate time series
   }
   \item{order}{
     A specification of the non-seasonal part of the ARIMA model:  the
@@ -31,17 +31,17 @@ ARIMA(x, order = c(0, 0, 0),
   }
   \item{xreg}{
     Optionally, a vector or matrix of external regressors, which must
-    have the same number of rows as 'x'. 
+    have the same number of rows as 'x'.
   }
   \item{include.mean}{
     Should the ARMA model include a mean/intercept term?  The default is
     'TRUE' for undifferenced series, and it is ignored for ARIMA models
-    with differencing. 
+    with differencing.
   }
   \item{transform.pars}{
     Logical.  If true, the AR parameters are transformed to ensure that
     they remain in the region of stationarity.  Not used for 'method =
-    "CSS"'. 
+    "CSS"'.
   }
   \item{fixed}{
     optional numeric vector of the same length as the total number of
@@ -49,30 +49,30 @@ ARIMA(x, order = c(0, 0, 0),
     varied.  'transform.pars = TRUE' will be overridden (with a warning)
     if any AR parameters are fixed.  It may be wise to set
     'transform.pars = FALSE' when fixing MA parameters, especially near
-    non-invertibility.  
+    non-invertibility.
   }
   \item{init}{
     optional numeric vector of initial parameter values.  Missing values
     will be filled in, by zeroes except for regression coefficients.
-    Values already specified in 'fixed' will be ignored.  
+    Values already specified in 'fixed' will be ignored.
   }
   \item{method}{
     Fitting method: maximum likelihood or minimize conditional
     sum-of-squares.  The default (unless there are missing values) is to
     use conditional-sum-of-squares to find starting values, then maximum
-    likelihood. 
+    likelihood.
   }
   \item{n.cond}{
     Only used if fitting by conditional-sum-of-squares: the number of
     initial observations to ignore.  It will be ignored if less than the
-    maximum lag of an AR term. 
+    maximum lag of an AR term.
   }
   \item{optim.control}{
     List of control parameters for 'optim'.
   }
   \item{kappa}{
     the prior variance (as a multiple of the innovations variance) for
-    the past observations in a differenced model.  Do not reduce this. 
+    the past observations in a differenced model.  Do not reduce this.
   }
   \item{Box.test.lag}{
     the Box.test statistic will be based on 'Box.test.lag'
@@ -94,17 +94,17 @@ ARIMA(x, order = c(0, 0, 0),
     of relevant parameters estimated.  The primary alternative 'lag' is
     the number of lags included in the computation of the statistic.
 
-    A positive number can also be provided.  
+    A positive number can also be provided.
   }
   \item{type}{
     which Box.test 'type' should be used?  Partial matching is used.
 
     The 'rank' alternative computes 'Ljung-Box' on rank(x);  see Burns
-    (2002) and references therein.    
+    (2002) and references therein.
 
     NOTE:  The default 'Ljung-Box' type generally seems to be more
     accurate and popular than the earlier 'Box-Pierce', which is however
-    the default for 'Box.test'. 
+    the default for 'Box.test'.
   }
 }
 \details{
@@ -112,13 +112,13 @@ ARIMA(x, order = c(0, 0, 0),
 
   2.  Compute the desired number of lags for Box.test
 
-  3.  Apply 'AutocorTest' to the whitened residuals.  
+  3.  Apply 'AutocorTest' to the whitened residuals.
 
   NOTE:  Some software does not adjust the degrees of freedom for the
   number of parameters estimated.  Tsay (2005) and Enders (2004) do.
   The need to adjust the degrees of freedom discussed by Brockwell and
   Davis (1990), who provide a proof describing the circumstances under
-  which this is appropriate. 
+  which this is appropriate.
 
   This is, however, an asymptotic result, and it would help to have
   simulation studies of the distribution of the Ljung-Box statistic,
@@ -128,17 +128,17 @@ ARIMA(x, order = c(0, 0, 0),
   reference describing such, would you please notify the maintainer of
   this package?
 
-  4.  If 'xreg' is supplied, compute r.squared.  
+  4.  If 'xreg' is supplied, compute r.squared.
 }
 \value{
   an 'arima' object with an additional 'Box.test' component and if
-  'xreg' is not null, an 'r.squared' component.  
+  'xreg' is not null, an 'r.squared' component.
 
   NOTE:  The 'Box.test' help page in R 2.6.1 says, 'Missing values are
   not handled.'  However, if 'x' contains NAs, 'ARIMA' still returns a
   numeric answer that seems plausible, at least in some examples.
   Therefore, either this comment on the help page is wrong (or obsolete)
-  or the answer can not be trusted with NAs.  
+  or the answer can not be trusted with NAs.
 }
 \references{
   Brockwell and Davis (1990) Time Series: Theory and Methods, 2nd
@@ -148,24 +148,25 @@ ARIMA(x, order = c(0, 0, 0),
   pp. 68-69)
 
   Greta Ljung and George E. P. Box (1978) 'On a measure of lack of fit
-  in time series models', Biometrika, vol. 66, pp. 67-72.  
-  
+  in time series models', Biometrika, vol. 66, pp. 67-72.
+
   Ruey Tsay (2005) Analysis of Financial Time Series, 2nd ed. (Wiley,
   ch. 2)
 
   Patrick Burns (2002) 'Robustness of the Ljung-Box Test and its Rank
   Equivalent',
   \url{http://www.burns-stat.com/pages/Working/ljungbox.pdf}, accessed
-  2007.12.29.  
+  2007.12.29.
 }
 \author{
-  Spencer Graves for the ARIMA{FinTS} wrapper for \link[stats]{arima},
-  written by the R Core Team, and \link[stats]{Box.text}, written by
-  A. Trapletti.  John Frain provided the citation to a proof in
-  Brockwell and Davis (1990) that the degrees of freedom for the
-  approximating chi-square distribution of the Ljung-Box statistic
-  should be adjusted for the number of parameters estimated.  Michal
-  Miklovic provided the citation to Enders (2004).  
+  Spencer Graves for the \code{ARIMA{FinTS}} wrapper for
+  \code{\link[stats]{arima}}, written by the R Core Team, and
+  \code{\link[stats]{Box.text}}, written by A. Trapletti.  John Frain
+  provided the citation to a proof in Brockwell and Davis (1990) that
+  the degrees of freedom for the approximating chi-square distribution
+  of the Ljung-Box statistic should be adjusted for the number of
+  parameters estimated.  Michal Miklovic provided the citation to Enders
+  (2004).
 }
 \seealso{
   \code{\link[stats]{arima}}
@@ -180,29 +181,29 @@ lh100 <- ARIMA(lh, order = c(1,0,0))
 lh100$Box.test
 # df = 3 = round(log(lh)) - 1
 # 2 parameters are estimated, but 1 is 'intercept',
-# so it doesn't count in the 'df' computation 
+# so it doesn't count in the 'df' computation
 
 lh500 <- ARIMA(lh, order = c(5,0,0))
 lh500$Box.test
-# round(log(length(lh))) = 4 
-# Default Box.test.lag = min(5+1, 4) = 6, 
-# so df = 1;  without the min(5+1, ...), it would be -1.  
-lh500$Box.test$method # lag = 6 
+# round(log(length(lh))) = 4
+# Default Box.test.lag = min(5+1, 4) = 6,
+# so df = 1;  without the min(5+1, ...), it would be -1.
+lh500$Box.test$method # lag = 6
 
 lh101 <- ARIMA(lh, order = c(1,0,1))
 lh101$Box.test
-# works with mixed ARMA 
+# works with mixed ARMA
 
 USAccD011 <- ARIMA(USAccDeaths, order = c(0,1,1),
                    seasonal = list(order=c(0,1,1)))
 USAccD011$Box.test
-# df = round(log(length(USAccDeaths))) - 2:  
-# correct 'df' with nonstationary 'seasonal' as well 
+# df = round(log(length(USAccDeaths))) - 2:
+# correct 'df' with nonstationary 'seasonal' as well
 
 LakeH200 <- ARIMA(LakeHuron, order = c(2,0,0),
                   xreg = time(LakeHuron)-1920)
 LakeH200$Box.test
-# correct 'df' with 'xreg' 
+# correct 'df' with 'xreg'
 LakeH200$r.squared
 
 ## presidents contains NAs

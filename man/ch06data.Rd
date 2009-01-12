@@ -5,7 +5,7 @@
 \alias{d.cscoy99}
 \title{ financial time series for Tsay (2005, chapter 6[text]) }
 \description{
-  Financial time series used in examples in chapter 6.  
+  Financial time series used in examples in chapter 6.
 }
 \usage{
 data(d.ibmy98)
@@ -13,20 +13,20 @@ data(d.cscoy99)
 }
 \format{
   Objects of class zoo giving returns for each trading day for different
-  periods 
+  periods
 
-  \item{d.ibmy98}{
-    Zoo object giving daily  simple returns of IBM stock for each
-    trading day in 1998.  
-  }
-  \item{d.cscoy99}{
-    Zoo object giving daily log returns of Cisco stock for each trading
-    day in 1999.   
+  \itemize{
+    \item{d.ibmy98}{
+      Zoo object giving daily  simple returns of IBM stock for each
+      trading day in 1998.
+    }
+    \item{d.cscoy99}{
+      Zoo object giving daily log returns of Cisco stock for each
+      trading day in 1999.
+    }
   }
 }
-\details{
-
-}
+%\details{}
 \source{
   \url{
     http://faculty.chicagogsb.edu/ruey.tsay/teaching/fts2
@@ -44,7 +44,5 @@ data(d.cscoy99)
   \code{\link{ch04data}}
   \code{\link{ch05data}}
 }
-\examples{
-
-}
+%\examples{}
 

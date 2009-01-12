@@ -2,27 +2,27 @@
 \alias{plotArmaTrueacf}
 \title{ plot the theoretical ACF corresponding to an ARMA model  }
 \description{
-  Compute the roots and theoretical ACF corresponding to an ARMA model 
+  Compute the roots and theoretical ACF corresponding to an ARMA model
 }
 \usage{
 plotArmaTrueacf(object, lag.max=20, pacf=FALSE, plot=TRUE,
           xlab="lag", ylab=c("ACF", "PACF")[1+pacf],
           ylim=c(-1, 1)*max(ACF), type="h",
-          complex.eps=1000*.Machine[["double.neg.eps"]], ...) 
+          complex.eps=1000*.Machine[["double.neg.eps"]], ...)
 }
 \arguments{
   \item{object}{
     either a numeric vector or a list with components 'ar' and 'ma'.  If
-    'object' is numeric, it is interpreted as a model with no 'ma' part.  
+    'object' is numeric, it is interpreted as a model with no 'ma' part.
   }
   \item{lag.max}{
-    the maximum number of lags for which to calculate the ACF or PACF 
+    the maximum number of lags for which to calculate the ACF or PACF
   }
   \item{pacf}{
     logical.  Should the partial autocorrelations be returned?
   }
   \item{plot}{
-    logical.  Should the ACF (or PACF) be plotted?  
+    logical.  Should the ACF (or PACF) be plotted?
   }
   \item{xlab, ylab, ylim, type}{
     arguments for 'plot'
@@ -36,7 +36,7 @@ plotArmaTrueacf(object, lag.max=20, pacf=FALSE, plot=TRUE,
     of their conjugates is less than complex.eps.
 
     We use 'solve' in the 'polynom' package, because it was substially
-    more accurate for cases we tested in R 2.6.0 than 'polyroot'.     
+    more accurate for cases we tested in R 2.6.0 than 'polyroot'.
   }
   \item{...}{
     optional arguments passed to 'plot'
@@ -46,28 +46,26 @@ plotArmaTrueacf(object, lag.max=20, pacf=FALSE, plot=TRUE,
   1.  Compute and test stationarity.  An ARMA process is stationary if
   all the roots of its AR component lie inside the unit  circle (Box and
   Jenkins, 1970).  If the process is not stationary, a warning is
-  issued, and no plot is produced.  
+  issued, and no plot is produced.
 
-  2.  Compute and plot the theoretical ACF.  
+  2.  Compute and plot the theoretical ACF.
 
-  3.  Analyze periodicity of any complex roots 
+  3.  Analyze periodicity of any complex roots
 }
 \value{
   a list with the following components
 
-  \itemize{
-    \item{roots}{
-      a complex vector of the roots sorted by modulus and sign of the
-      immaginary part.  
-    }
-    \item{acf, pacf}{
-      a named numeric vector of the estimated ACF (or PACF of 'pacf =
-      TRUE').  
-    }
-    \item{periodicity}{
-      a data.frame with one row for each complex conjugate pair of roots
-      and columns 'damping' and 'period'.  
-    }
+  \item{roots}{
+    a complex vector of the roots sorted by modulus and sign of the
+    immaginary part.
+  }
+  \item{acf, pacf}{
+    a named numeric vector of the estimated ACF (or PACF of 'pacf =
+    TRUE').
+  }
+  \item{periodicity}{
+    a data.frame with one row for each complex conjugate pair of roots
+    and columns 'damping' and 'period'.
   }
 }
 \source{
@@ -79,8 +77,8 @@ plotArmaTrueacf(object, lag.max=20, pacf=FALSE, plot=TRUE,
   George E. P. Box and Gwilym M. Jenkins (1970) Time Series Analysis,
   Forecasting and Control (Holden-Day, sec. 3.4.1.  Stationarity and
   invertibility properties of Mixed autoregressive-moving average
-  processes) 
-  
+  processes)
+
   Ruey Tsay (2005) Analysis of Financial Time Series, 2nd ed. (Wiley,
   ch. 2)
 }

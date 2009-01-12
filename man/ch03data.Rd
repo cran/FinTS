@@ -11,7 +11,7 @@
 \alias{d.sp8099}
 \title{ financial time series for Tsay (2005, chapter 3[text]) }
 \description{
-  Financial time series used in examples in chapter 3.  
+  Financial time series used in examples in chapter 3.
 }
 \usage{
 #m.intc7303
@@ -30,37 +30,38 @@ data(d.sp8099  )
   are documented with 'ch01data';  'm.ibm2697' is used in chapters 2 and
   3 is documented with ch02data.
 
-  The other data sets used in chapter 3 are as follows:  
+  The other data sets used in chapter 3 are as follows:
 
-  \item{exch.perc}{
-    numeric vector of length 2497 giving percentage changes in the
-    exchange rate between the German mark and the US dollar in 10 minute
-    intervals, June 5-19, 1989.  (The book describes analyses of 2488
-    observations.  If these 2497 observations are plotted, it is
-    difficult to see any differences from Figure 3.2.)  
-  }  
-  \item{sp500}{
-    object of class 'zooreg' giving the monthly excess returns of the
-    S&P 500 index starting from 1926.  This zooreg object is labeled
-    assuming it starts in January, though the book does not say whether
-    it starts in January or just some time in 1926.  (Many of the files
-    included date with the data, but 'sp500.dat' did not.)  
+  \itemize{
+    \item{exch.perc}{
+      numeric vector of length 2497 giving percentage changes in the
+      exchange rate between the German mark and the US dollar in 10
+      minute intervals, June 5-19, 1989.  (The book describes analyses
+      of 2488 observations.  If these 2497 observations are plotted, it
+      is difficult to see any differences from Figure 3.2.)
+    }
+    \item{sp500}{
+      object of class 'zooreg' giving the monthly excess returns of the
+      S&P 500 index starting from 1926.  This zooreg object is labeled
+      assuming it starts in January, though the book does not say
+      whether it starts in January or just some time in 1926.  (Many of
+      the files included date with the data, but 'sp500.dat' did not.)
+    }
+    \item{m.ibmspln}{
+      object of class 'zooreg' giving the monthly log returns of IBM
+      stock and S&P 500 index from January 1926 to December 1999 for 888
+      observations.  NOTE:  The examples in the book use only the first
+      864 of these observations.
+    }
+    \item{m.ibmsplnsu}{
+      same as 'm.ibmspln' but with a third column 'summer' that is 1 in
+      June, July and August, and 0 otherwise.
+    }
+    \item{d.sp8099}{
+      zoo object giving the average daily returns of the S&P 500 from
+      1980 through 1999.
+    }
   }
-  \item{m.ibmspln}{
-    object of class 'zooreg' giving the monthly log returns of IBM stock
-    and S&P 500 index from January 1926 to December 1999 for 888
-    observations.  NOTE:  The examples in the book use only the first
-    864 of these observations. 
-  }
-  \item{m.ibmsplnsu}{
-    same as 'm.ibmspln' but with a third column 'summer' that is 1 in
-    June, July and August, and 0 otherwise.  
-  }
-  \item{d.sp8099}{
-    zoo object giving the average daily returns of the S&P 500 from 1980
-    through 1999.  
-  }
-
 }
 %\details{
 %}
@@ -75,7 +76,7 @@ data(d.sp8099  )
 }
 \keyword{datasets}
 \seealso{
-  \code{\link{ch01data}} 
+  \code{\link{ch01data}}
   \code{\link{ch02data}}
 }
 %\examples{

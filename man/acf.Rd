@@ -2,11 +2,11 @@
 \alias{Acf}
 \alias{plot.Acf}
 \title{
-Autocorrelation Function 
+Autocorrelation Function
 }
 \description{
   Plot the ACF without the traditional noninformation unit spike at lag
-  0. 
+  0.
 }
 \usage{
      Acf(x, lag.max = NULL,
@@ -20,23 +20,23 @@ Autocorrelation Function
           oma = if(nser > 2) c(1,1.2,1,1) else par("oma"),
           mgp = if(nser > 2) c(1.5,0.6,0) else par("mgp"),
           xpd = par("xpd"), cex.main = if(nser > 2) 1 else par("cex.main"),
-          verbose = getOption("verbose"), acfLag0=FALSE, 
+          verbose = getOption("verbose"), acfLag0=FALSE,
           ...)
 }
 \arguments{
   These functions are provided to make it easy to plot an
-  autocorrelation function without the noninformative unit spike at lag 
+  autocorrelation function without the noninformative unit spike at lag
   0.  This is done by calling plot(x, acfLag0=FALSE, ...).  Apart from
   the 'acfLag0' argument, the rest of the arguments are identical to
-  those for 'acf' and 'plot.acf'.  
-  
+  those for 'acf' and 'plot.acf'.
+
   \item{x}{
     for 'acf':  a numeric vector or time series.
 
-    for 'plot.acf':  an object of class 'acf'.  
+    for 'plot.acf':  an object of class 'acf'.
   }
   \item{lag.max}{
-    maximum lag at which to calculate the acf.  
+    maximum lag at which to calculate the acf.
   }
   \item{ci}{
     coverage probability for confidence interval for 'plot.acf'.
@@ -56,29 +56,27 @@ Autocorrelation Function
   }
   \item{xlab, ylab, ylim, main, ci.col, ci.type, max.mfrow,
     ask, mar, oma, mgp, xpd, cex.main, verbose}{
-    as described with help('acf', package='stats')  
+    as described with help('acf', package='stats')
   }
   \item{acfLag0}{
     logical:  TRUE to plot the traditional noninformation unit spike at
     lag 0.  FALSE to omit that spike, consistent with the style in Tsay
-    (2005).  
+    (2005).
   }
   \item{...}{further arguments passed to 'plot.acf'}
 }
-\details{
-
-}
+%\details{}
 \value{
   The 'acf' function returns an object of class 'Acf', which inherits
   from class 'acf', as described with help('acf', package='stats').
 
-  The 'plot.Acf' function returns NULL.  
+  The 'plot.Acf' function returns NULL.
 }
 \author{
-  Spencer Graves for the FinTS modification of 'plot.acf'.  
+  Spencer Graves for the FinTS modification of 'plot.acf'.
 }
 \references{
-  Ruey Tsay (2005) Analysis of Financial Time Series, 2nd ed. (Wiley) 
+  Ruey Tsay (2005) Analysis of Financial Time Series, 2nd ed. (Wiley)
 }
 \seealso{
   \code{\link[stats]{acf}}

@@ -1,0 +1,11 @@
+Changes in Version 0.3-7
+
+  o Added "See Also: 'file.path'" to the help file
+    for 'package.dir' to make it easier to find.
+
+Changes in Version 0.3-6
+
+  o This is the first version to have a complete
+    script for chapter 9.  The previous release had
+    complete scripts for chapters 1-3 and partial
+    scripts for chapters 4, 9, and 11.
