@@ -1,4 +1,4 @@
-runscript <- function(x, method=c('run', 'copy', 'view', 'dir'),
+runscript <- function(x, method=c('run', 'copy', 'view', 'show', 'dir'),
                       ask = TRUE, fmt="ch%02d.R", package="FinTS",
                       subdir="scripts", lib.loc=NULL){
 ##
@@ -59,6 +59,13 @@ runscript <- function(x, method=c('run', 'copy', 'view', 'dir'),
 #
   if(method=='view'){
     cat(ch., sep="\n")
+    return(invisible(Ch))
+  }
+##
+## 4a.  method == 'show'
+##
+  if(method=='show'){
+    file.show(Ch)
     return(invisible(Ch))
   }
 ##

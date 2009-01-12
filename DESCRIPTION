@@ -1,7 +1,7 @@
 Package: FinTS
 Type: Package
 Title: Companion to Tsay (2005) Analysis of Financial Time Series
-Version: 0.4-2
+Version: 0.4-3
 Date: 2009-01-12
 Author: Spencer Graves
 Maintainer: Spencer Graves <spencer.graves@prodsyse.com>
@@ -19,6 +19,6 @@ Suggests: fCalendar, moments, distrEx, tseries, urca, lmtest, sandwich,
         e1071
 Repository: CRAN
 Repository/R-Forge/Project: fints
-Repository/R-Forge/Revision: 111
-Date/Publication: 2009-09-07 17:57:26
-Packaged: 2009-09-06 20:12:20 UTC; rforge
+Repository/R-Forge/Revision: 112
+Date/Publication: 2009-10-07 07:47:47
+Packaged: 2009-10-05 20:11:00 UTC; rforge
