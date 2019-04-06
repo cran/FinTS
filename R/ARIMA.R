@@ -1,25 +1,35 @@
 ARIMA <- function(x, order = c(0, 0, 0), 
-      seasonal = list(order = c(0, 0, 0), period = NA),
-      xreg = NULL, include.mean = TRUE, transform.pars = TRUE,
-      fixed = NULL, init = NULL, method = c("CSS-ML", "ML", "CSS"),
-      n.cond, optim.control = list(), kappa = 1e6, Box.test.lag=NULL,
-      Box.test.df = c("net.lag", "lag"), 
-      type = c("Ljung-Box", "Box-Pierce", "rank")){
+     seasonal = list(order = c(0, 0, 0),
+                     period = NA),
+     xreg = NULL, include.mean = TRUE, 
+     transform.pars = TRUE, fixed = NULL, 
+     init = NULL, 
+     method = c("CSS-ML", "ML", "CSS"),
+     n.cond, optim.control = list(), 
+     kappa = 1e6, Box.test.lag=NULL,
+     Box.test.df = c("net.lag", "lag"), 
+     type = c("Ljung-Box", "Box-Pierce",
+                "rank")){
 ##
 ## 1.  arima
 ##
-  fit <- arima(x=x, order=order, seasonal=seasonal, xreg=xreg,
-               include.mean=include.mean, transform.pars=transform.pars, 
-               fixed=fixed, init=init, method=method, n.cond=n.cond,
-               optim.control=optim.control, kappa=kappa)
+  fit <- stats::arima(x=x, order=order,
+           seasonal=seasonal, xreg=xreg,
+           include.mean=include.mean,
+           transform.pars=transform.pars, 
+           fixed=fixed, init=init, 
+           method=method, n.cond=n.cond,
+           optim.control=optim.control, 
+           kappa=kappa)
 ##
 ## 2.  Compute desired number of lags and degrees of freedom
 ##     for Box.test 
 ##
 #  2.1.  number of parameters estimated (apart from 'intercept')
-  vc <- vcov(fit)
+  vc <- stats::vcov(fit)
 # CAN NOT use coef(fit) here,
-# because it includes parameters fixed as well as estimated.
+# because it includes parameters fixed 
+#     as well as estimated.
 # vcov includes only parameters ESTIMATED  
   int <- ('intercept' %in% dimnames(vc)[[1]])
   kPars <- (dim(vc)[1] - int)
@@ -48,13 +58,14 @@ ARIMA <- function(x, order = c(0, 0, 0),
 ## 4.  'xreg'?  
 ##
   if(!is.null(xreg)){
-    varX <- var(xreg)
+    varX <- stats::var(xreg)
     k <- dim(varX)[1]
     if(length(k)==0)k <- 1 
-    b <- coef(fit)
+    b <- stats::coef(fit)
     bx <- b[length(b)-(k-1):0]
     var.expl <- crossprod(varX %*% bx, bx)
-    fit$r.squared <- min(1, var.expl/var(x))
+    fit$r.squared <- min(1, var.expl/
+                           stats::var(x))
   }
 ##
 ## 5.  Done

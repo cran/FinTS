@@ -9,15 +9,16 @@ FinTS.stats <- function(x){
 #  }
   N <- sum(!is.na(x))
   Mean <- mean(x, na.rm=TRUE)
-  Sd <- sd(x, na.rm=TRUE)
+  Sd <- stats::sd(x, na.rm=TRUE)
   {
-    if(require('e1071')){
-      sk <- skewness(x, na.rm=TRUE)
-      kurt <- kurtosis(x, na.rm=TRUE)
+    if(requireNamespace("e1071", 
+                  quietly = TRUE)){
+      sk <- e1071::skewness(x, na.rm=TRUE)
+      kurt <- e1071::kurtosis(x, na.rm=TRUE)
     }
     else{
-      warning('requires(e1071) for skewness and kurtosis;',
-              ' returning NAs')
+      warning('requires(e1071) for skewness', 
+         'and kurtosis; returning NAs')
       sk <- NA
       kurt <- NA
     }

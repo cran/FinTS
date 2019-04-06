@@ -26,7 +26,8 @@ runscript <- function(x, method=c('run', 'copy', 'view', 'show', 'dir'),
         if(class(fL) != "try-error")
           firstLine[i] <- paste(chs[i], fL, sep=" - ")
       }
-      fL. <- (select.list(firstLine) == firstLine)
+      fL. <- (utils::select.list(firstLine) 
+              == firstLine)
       ch <- chs[fL.]
       Ch <- Chs[fL.]
     }
@@ -46,8 +47,8 @@ runscript <- function(x, method=c('run', 'copy', 'view', 'show', 'dir'),
 ##
   if(method=='run'){
     if(ask){
-      op <- par(ask=TRUE)
-      on.exit(par(op))
+      op <- graphics::par(ask=TRUE)
+      on.exit(graphics::par(op))
     }
     source(Ch, echo = TRUE)
     return(invisible(Ch))

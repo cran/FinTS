@@ -1,13 +1,14 @@
-read.yearmon <- function(file, format = "", tz = "", FUN = NULL,
-                         regular = FALSE, index.column = 1, ...)
+read.yearmon <- function(file, format = "", 
+      tz = "", FUN = NULL, regular = FALSE,
+      index.column = 1, ...)
 {
-  ## `file' and `...' are simply passed to read.table
+## `file' and `...' are simply passed to read.table
   ## the first column is interpreted to be the index, the rest the coredata
   ## it is transformed to an arbitrary index class by `FUN'
   ## defaults for `FUN' are guessed and are numeric, Date or POSIXct
 
   ## read data
-  rval <- read.table(file, ...)
+  rval <- utils::read.table(file, ...)
 
   ## if `file' does not contain data
   Nr <- NROW(rval)

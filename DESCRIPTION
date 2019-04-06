@@ -1,26 +1,26 @@
 Package: FinTS
 Type: Package
 Title: Companion to Tsay (2005) Analysis of Financial Time Series
-Version: 0.4-5
-Date: 2009-01-12
+Version: 0.4-6
+Date: 2019-04-05
 Author: Spencer Graves
-Maintainer: Spencer Graves <spencer.graves@prodsyse.com>
+Maintainer: Georgi N. Boshnakov <georgi.boshnakov@manchester.ac.uk>
 Description: R companion to Tsay (2005)
- Analysis of Financial Time Series, 2nd ed. (Wiley).
+ Analysis of Financial Time Series, second edition (Wiley).
  Includes data sets, functions and script files
  required to work some of the examples.  Version 0.3-x
  includes R objects for all data files used in the text
  and script files to recreate most of the analyses in
  chapters 1-3 and 9 plus parts of chapters 4 and 11.
 License: GPL (>= 2)
-URL: http://faculty.chicagobooth.edu/ruey.tsay/teaching/bs41202/sp2009
+URL: https://r-forge.r-project.org/projects/fints/
 Depends: R (>= 2.10), zoo, graphics
 Suggests: moments, distrEx, tseries, urca, lmtest, sandwich, psych,
-        GPArotation, chron, polynom, fUnitRoots, e1071
+        GPArotation, chron, polynom, e1071
 Repository: CRAN
 Repository/R-Forge/Project: fints
-Repository/R-Forge/Revision: 120
-Repository/R-Forge/DateTimeStamp: 2014-03-27 00:41:33
-Date/Publication: 2014-03-28 07:18:30
-Packaged: 2014-03-27 03:35:28 UTC; rforge
+Repository/R-Forge/Revision: 123
+Repository/R-Forge/DateTimeStamp: 2019-04-06 20:52:58
+Date/Publication: 2019-04-06 22:33:32 UTC
 NeedsCompilation: no
+Packaged: 2019-04-06 21:10:10 UTC; rforge

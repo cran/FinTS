@@ -1,7 +1,9 @@
-plotArmaTrueacf <- function(object, lag.max=20, pacf=FALSE, plot=TRUE,
-                        xlab="lag", ylab=c("ACF", "PACF")[1+pacf],
-                        ylim=c(-1, 1)*max(ACF), type="h",
-                        complex.eps=1000*.Machine[["double.neg.eps"]],
+plotArmaTrueacf <- function(object, 
+    lag.max=20, pacf=FALSE, plot=TRUE,
+    xlab="lag", ylab=c("ACF", "PACF")[1+pacf],
+    ylim=c(-1, 1)*max(ACF), type="h",
+    complex.eps = 
+      1000*.Machine[["double.neg.eps"]],
                             ...){
 ##
 ##  1.  Extract AR part
@@ -22,9 +24,10 @@ plotArmaTrueacf <- function(object, lag.max=20, pacf=FALSE, plot=TRUE,
   {
     if(length(AR)>0){
 #     roots <- (1/polyroot(c(1, -AR)))
-#     solve(polynomial(...)) is more accurate than polyroot
-      library(polynom) 
-      p <- polynomial(c(1, -AR))
+#     solve(polynomial(...)) is more accurate 
+#        than polyroot
+#      library(polynom) 
+      p <- polynom::polynomial(c(1, -AR))
       roots <- (1/solve(p))
 # test stationarity
       if(any(abs(roots)>=1)){
@@ -40,14 +43,16 @@ plotArmaTrueacf <- function(object, lag.max=20, pacf=FALSE, plot=TRUE,
 ##
 ## 2.  Generate ACF
 ##
-  ACF <- ARMAacf(ar=AR, ma=MA, lag.max=lag.max, pacf=pacf)
+  ACF <- stats::ARMAacf(ar=AR, ma=MA, 
+            lag.max=lag.max, pacf=pacf)
   if(plot){
     indx <- {
       if(pacf)1:lag.max
       else 0:lag.max
     }
-    plot(indx, ACF, xlab=xlab, ylab=ylab, ylim=ylim, type=type, ...)
-    abline(h=0)
+    plot(indx, ACF, xlab=xlab, ylab=ylab, 
+         ylim=ylim, type=type, ...)
+    graphics::abline(h=0)
   }
 ##
 ## 3.  Test periodicity    

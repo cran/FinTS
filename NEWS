@@ -1,3 +1,14 @@
+Changes in Version 0.4-6
+
+  o New maintainer - Georgi N. Boshnakov.
+
+  o The URL in file DESCRIPTION had become inaccessible, the current one is 
+    http://faculty.chicagobooth.edu/ruey.tsay/teaching/fts2/.
+
+    However, I (GB) think that this should be the development page of the
+    package, so I changed it to https://r-forge.r-project.org/projects/fints/.
+
+
 Changes in Version 0.3-7
 
   o Added "See Also: 'file.path'" to the help file

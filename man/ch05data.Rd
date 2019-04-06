@@ -142,7 +142,7 @@ data(day15)
 %}
 \source{
   \url{
-    http://faculty.chicagogsb.edu/ruey.tsay/teaching/fts2
+    http://faculty.chicagobooth.edu/ruey.tsay/teaching/fts2
   }
 }
 \references{
