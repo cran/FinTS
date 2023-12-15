@@ -5,9 +5,9 @@
   Ljung-Box test for autocorrelation
 }
 \usage{
-AutocorTest(x, lag=ceiling(log(length(x))),
-            type=c("Ljung-Box", "Box-Pierce", "rank"),
-            df=lag )
+AutocorTest(x, lag = ceiling(log(length(x))),
+            type = c("Ljung-Box", "Box-Pierce", "rank"),
+            df = lag )
 }
 \arguments{
   \item{x}{
@@ -68,16 +68,14 @@ AutocorTest(x, lag=ceiling(log(length(x))),
   }
 }
 \source{
-  \url{
-    http://faculty.chicagobooth.edu/ruey.tsay/teaching/fts2
-  }
+  \url{https://faculty.chicagobooth.edu/ruey-s-tsay/teaching}
 }
 \references{
   Ruey Tsay (2005) Analysis of Financial Time Series, 2nd ed. (Wiley)
 
   Patrick Burns (2002) 'Robustness of the Ljung-Box Test and its Rank
   Equivalent',
-  \url{http://www.burns-stat.com/pages/Working/ljungbox.pdf}, accessed
+  \url{https://www.burns-stat.com/pages/Working/ljungbox.pdf}, accessed
   2007.12.29.
 }
 \seealso{
@@ -90,7 +88,5 @@ AutocorTest(m.ibm2697, 5)
 
 AT4 <- AutocorTest(m.ibm2697, 5, df=4)
 str(AT4) # $method = "Box-Ljung test (lag = 5)"
-
 }
 \keyword{ts}
-

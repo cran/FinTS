@@ -6,7 +6,7 @@
 \alias{m.mrk6503}
 %\alias{m.ibmsp2699}
 \alias{d.spcscointc}
-\title{ financial time series for Tsay (2005, chapter 10[text]) }
+\title{ Financial time series for Tsay (2005, ch. 10) }
 \description{
   Financial time series used in examples in chapter 10.
 }
@@ -26,7 +26,7 @@ data(d.spcscointc)
 
   The other data sets used in chapter 10 are as follows:
 
-  \itemize{
+  \describe{
     \item{d.hkja}{
       zoo object giving the daily log returns of HK and Japan market
       indices from 1996-01-01 through 1997-05-05 (used in Example 10.1).
@@ -39,7 +39,7 @@ data(d.spcscointc)
       data.frame giving 2275 daily log returns of three items from
       January 2, 1991 through December 31, 1999:
 
-      \itemize{
+      \describe{
 	\item{SP500}{Standard & Poor's 500 index}
 	\item{Cisco}{Cisco stock}
 	\item{Intel}{Intel stock}
@@ -56,9 +56,7 @@ data(d.spcscointc)
 }
 %\details{}
 \source{
-  \url{
-    http://faculty.chicagobooth.edu/ruey.tsay/teaching/fts2
-  }
+  \url{https://faculty.chicagobooth.edu/ruey-s-tsay/teaching}
 }
 \references{
   Ruey Tsay (2005) Analysis of Financial Time Series, 2nd ed. (Wiley,
@@ -66,16 +64,15 @@ data(d.spcscointc)
 }
 \keyword{datasets}
 \seealso{
-  \code{\link{ch01data}}
-  \code{\link{ch02data}}
-  \code{\link{ch03data}}
-  \code{\link{ch04data}}
-  \code{\link{ch05data}}
-  \code{\link{ch06data}}
-  \code{\link{ch07data}}
-  \code{\link{ch08data}}
+  \code{\link{ch01data}},
+  \code{\link{ch02data}},
+  \code{\link{ch03data}},
+  \code{\link{ch04data}},
+  \code{\link{ch05data}},
+  \code{\link{ch06data}},
+  \code{\link{ch07data}},
+  \code{\link{ch08data}},
   \code{\link{ch09data}}
 }
 %\examples{
 %}
-

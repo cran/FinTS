@@ -20,26 +20,24 @@ FinTS.stats(x)
 }
 \seealso{
 %  \code{\link{Table1.2}}
-  \code{\link[zoo]{index}}
-  \code{\link{sum}}
-  \code{\link{is.na}}
-  \code{\link{mean}}
-  \code{\link{sd}}
-  \code{\link[e1071]{skewness}}
-  \code{\link[e1071]{kurtosis}}
-  \code{\link{min}}
+  \code{\link[zoo]{index}},
+  \code{\link{sum}},
+  \code{\link{is.na}},
+  \code{\link{mean}},
+  \code{\link{sd}},
+  \code{\link[e1071]{skewness}},
+  \code{\link[e1071]{kurtosis}},
+  \code{\link{min}},
   \code{\link{max}}
 }
 \examples{
 FinTS.stats(rep(1, 5))
 
-%data(d.c8603)
-%FinTS.stats(100*d.c8603[, "C"])
+data(d.c8603)
+FinTS.stats(100*d.c8603[, "C"])
 
-# The following generates an error,
-# because FinTS.stats expects a vector
-# of class 'zoo', and d.c8603 is a matrix 
+## The following generates an error, because FinTS.stats
+## expects a vector of class 'zoo', and d.c8603 is a matrix
 #FinTS.stats(100*d.c8603) 
-
 }
 \keyword{univar}

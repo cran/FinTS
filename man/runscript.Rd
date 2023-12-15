@@ -5,32 +5,33 @@
   Run a script associated with a particular chapter
 }
 \usage{
-runscript(x, method=c('run', 'copy', 'view', 'show', 'dir'),
-          ask = TRUE, fmt="ch\%02d.R", package="FinTS",
-          subdir="scripts", lib.loc=NULL)
+runscript(x, method = c('run', 'copy', 'view', 'show', 'dir'),
+          ask = TRUE, fmt = "ch\%02d.R", package = "FinTS",
+          subdir = "scripts", lib.loc = NULL)
 }
 \arguments{
   \item{x}{
-    an object to identify a file in package/subdir via sprintf(fmt, x).
+    an object to identify a file in package/subdir via
+    \code{sprintf(fmt, x)}. 
 
-    For example, the default 'fmt' translates x = 2 into 'ch02.R'.  If
+    For example, the default 'fmt' translates \code{x = 2} into 'ch02.R'.  If
     no 'x' is specified, a directory of options is provided.
 
     CAUTION:  Under some systems like ESS (Emacs Speaks Statistics)
-    under Windows, pop-up menus such as produced by 'runscript()' may
+    under Windows, pop-up menus such as produced by \code{runscript()} may
     not work properly.
   }
   \item{method}{
     One of the following:
 
-    \itemize{
+    \describe{
       \item{run}{
 	run the desired script file, similar to \link{demo} or
 	\link{example}.
       }
       \item{copy}{
 	make a copy if the desired script file in the working directory,
-	similar to Stangle(vignette(...)[["file"]]).
+	similar to \code{Stangle(vignette(...)[["file"]])}.
       }
       \item{view}{
 	display the desired script file on R console but do not execute it.
@@ -47,8 +48,8 @@ runscript(x, method=c('run', 'copy', 'view', 'show', 'dir'),
     Partial matching is allowed.
   }
   \item{ask}{
-    logical:  Should 'par(ask=TRUE)' should be called before graphical
-    output happens from the scruot?
+    logical:  Should \code{par(ask=TRUE)} be called before graphical
+    output happens from the script?
   }
   \item{fmt}{
     a format to be used with 'x' in \link{sprintf} to create the name of
@@ -56,22 +57,22 @@ runscript(x, method=c('run', 'copy', 'view', 'show', 'dir'),
   }
   \item{subdir}{
     subdirectory of package containing a file of the name constructed
-    via sprintf(fmt, x)
+    via \code{sprintf(fmt, x)}.
   }
   \item{package}{
     Name of a package with subdirectory 'subdir'.
   }
   \item{lib.loc}{
     NULL or character string identifying the location where
-    'system.file(subdir, package, lib.loc)' will find the folder
-    containing the file identified via sprintf(fmt, x)
+    \verb{system.file(subdir, package, lib.loc)} will find the folder
+    containing the file identified via \code{sprintf(fmt, x)}.
   }
 }
 \details{
   similar to \link{demo} or \link{example}
 }
 \value{
-  the full full path and filename, invisibly unless method == 'dir'
+  the full path and filename, invisibly unless \code{method == 'dir'}
 }
 %\references{
 %}
@@ -79,12 +80,12 @@ runscript(x, method=c('run', 'copy', 'view', 'show', 'dir'),
   Gabor Grothendieck and Spencer Graves
 }
 \seealso{
-  \code{\link[utils]{demo}}
-  \code{\link[base]{sprintf}}
-  \code{\link[base]{system.file}}
-  \code{\link{package.dir}}
-  \code{\link{Stangle}}
-  \code{\link{vignette}}
+  \code{\link[utils]{demo}},
+  \code{\link[base]{sprintf}},
+  \code{\link[base]{system.file}},
+  \code{\link{package.dir}},
+  \code{\link{Stangle}},
+  \code{\link{vignette}},
   \code{\link{example}}
 }
 \examples{
@@ -92,7 +93,7 @@ runscript(x, method=c('run', 'copy', 'view', 'show', 'dir'),
 # provide a menu
 runscript()
 
-# run ~R\library\FinTS\scripts\ch01.R
+# run R/library/FinTS/scripts/ch01.R
 runscript(1)
 
 # same as:
@@ -110,10 +111,9 @@ runscript(1, 'show')
 # where is it?
 runscript(1, 'dir')
 
-# run ~R\library\nlme\scripts\afda-ch01.R
+# run R/library/nlme/scripts/afda-ch01.R
 if(require(fda))
-     runscript(1, fmt="afda-ch%02d.R", package="fda")
+    runscript(1, fmt = "afda-ch\%02d.R", package = "fda")
 }
 }
 \keyword{utilities}
-

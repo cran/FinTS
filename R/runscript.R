@@ -23,7 +23,7 @@ runscript <- function(x, method=c('run', 'copy', 'view', 'show', 'dir'),
       firstLine <- chs
       for(i in seq(1, length=ns)){
         fL <- try(readLines(Chs[i], 1))
-        if(class(fL) != "try-error")
+        if(!inherits(fL, "try-error"))
           firstLine[i] <- paste(chs[i], fL, sep=" - ")
       }
       fL. <- (utils::select.list(firstLine) 

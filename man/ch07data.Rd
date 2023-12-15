@@ -3,7 +3,7 @@
 \alias{ch07data}
 \alias{d.ibm6298wmx}
 \alias{d.intc7297}
-\title{ financial time series for Tsay (2005, chapter 7[text]) }
+\title{ Financial time series for Tsay (2005, ch. 7) }
 \description{
   Financial time series used in examples in chapter 7.
 }
@@ -13,12 +13,12 @@ data(d.intc7297)
 }
 \format{
 
-  \itemize{
+  \describe{
     \item{d.ibm6298wmx}{
       a zoo object of 9190 observations on several series relating to
       IBM stock, 1962-07-03 to 1998-12-31:
 
-      \itemize{
+      \describe{
 	\item{dailySimpleRtns}{
 	  daily simple returns in percentages of IBM stock
 	}
@@ -54,16 +54,14 @@ data(d.intc7297)
 
     \item{d.intc7297}{
       a zoo object of daily log returns of Intel stock, 1972-12-15 to
-      1997-12-31
+      1997-12-31.
     }
   }
 }
 %\details{
 %}
 \source{
-  \url{
-    http://faculty.chicagobooth.edu/ruey.tsay/teaching/fts2
-  }
+  \url{https://faculty.chicagobooth.edu/ruey-s-tsay/teaching}
 }
 \references{
   Ruey Tsay (2005)
@@ -71,11 +69,11 @@ data(d.intc7297)
 }
 \keyword{datasets}
 \seealso{
-  \code{\link{ch01data}}
-  \code{\link{ch02data}}
-  \code{\link{ch03data}}
-  \code{\link{ch04data}}
-  \code{\link{ch05data}}
+  \code{\link{ch01data}},
+  \code{\link{ch02data}},
+  \code{\link{ch03data}},
+  \code{\link{ch04data}},
+  \code{\link{ch05data}},
   \code{\link{ch06data}}
 }
 %\examples{

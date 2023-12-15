@@ -41,7 +41,7 @@ mo.logRtns <- c(.0446, -.0734, .1077)
 # Example 1.2.
 data(d.ibmvwewsp6203)
 s.ibm <- sd(d.ibmvwewsp6203[, "IBM"])
-(skew.ibm <- skewness(d.ibmvwewsp6203[, "IBM"]))
+(skew.ibm <- e1071::skewness(d.ibmvwewsp6203[, "IBM"]))
 (n.ibm <- dim(d.ibmvwewsp6203)[1])
 (skew.sd <- sqrt(6/n.ibm))
 (t.sk <- (skew.ibm/skew.sd))

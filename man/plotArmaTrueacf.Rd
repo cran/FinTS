@@ -1,14 +1,14 @@
 \name{plotArmaTrueacf}
 \alias{plotArmaTrueacf}
-\title{ plot the theoretical ACF corresponding to an ARMA model  }
+\title{ Plot the theoretical ACF corresponding to an ARMA model  }
 \description{
   Compute the roots and theoretical ACF corresponding to an ARMA model
 }
 \usage{
-plotArmaTrueacf(object, lag.max=20, pacf=FALSE, plot=TRUE,
-          xlab="lag", ylab=c("ACF", "PACF")[1+pacf],
-          ylim=c(-1, 1)*max(ACF), type="h",
-          complex.eps=1000*.Machine[["double.neg.eps"]], ...)
+plotArmaTrueacf(object, lag.max = 20, pacf = FALSE, plot = TRUE,
+          xlab = "lag", ylab = c("ACF", "PACF")[1+pacf],
+          ylim = c(-1, 1) * max(ACF), type = "h",
+          complex.eps = 1000 * .Machine[["double.neg.eps"]], ...)
 }
 \arguments{
   \item{object}{
@@ -16,7 +16,7 @@ plotArmaTrueacf(object, lag.max=20, pacf=FALSE, plot=TRUE,
     'object' is numeric, it is interpreted as a model with no 'ma' part.
   }
   \item{lag.max}{
-    the maximum number of lags for which to calculate the ACF or PACF
+    the maximum number of lags for which to calculate the ACF or PACF.
   }
   \item{pacf}{
     logical.  Should the partial autocorrelations be returned?
@@ -39,7 +39,7 @@ plotArmaTrueacf(object, lag.max=20, pacf=FALSE, plot=TRUE,
     more accurate for cases we tested in R 2.6.0 than 'polyroot'.
   }
   \item{...}{
-    optional arguments passed to 'plot'
+    optional arguments passed to 'plot'.
   }
 }
 \details{
@@ -69,9 +69,7 @@ plotArmaTrueacf(object, lag.max=20, pacf=FALSE, plot=TRUE,
   }
 }
 \source{
-  \url{
-    http://faculty.chicagobooth.edu/ruey.tsay/teaching/fts2
-  }
+  \url{https://faculty.chicagobooth.edu/ruey-s-tsay/teaching}
 }
 \references{
   George E. P. Box and Gwilym M. Jenkins (1970) Time Series Analysis,
@@ -83,20 +81,20 @@ plotArmaTrueacf(object, lag.max=20, pacf=FALSE, plot=TRUE,
   ch. 2)
 }
 \seealso{
-  \code{\link[polynom]{solve.polynomial}}
+  \code{\link[polynom]{solve.polynomial}},
   \code{\link[stats]{ARMAacf}}
 }
 \examples{
 # Tsay, Figure 2.3
-op <- par(mfcol=c(1, 2))
-plotArmaTrueacf(.8, lag.max=8)
+op <- par(mfcol = c(1, 2))
+plotArmaTrueacf(.8, lag.max = 8)
 title("(a)")
-plotArmaTrueacf(-.8, lag.max=8)
+plotArmaTrueacf(-.8, lag.max = 8)
 title("b")
 par(op)
 
 # Tsay, Figure 2.4
-op <- par(mfrow=c(2,2))
+op <- par(mfrow = c(2,2))
 plotArmaTrueacf(c(1.2, -.35))
 title("(a)")
 plotArmaTrueacf(c(.6, -.4))
@@ -109,9 +107,7 @@ par(op)
 
 # Tsay, Example 2.1
 data(q.gnp4791)
-(fit.ar3 <- ar(q.gnp4791, aic=FALSE, order=3))
+(fit.ar3 <- ar(q.gnp4791, aic = FALSE, order = 3))
 plotArmaTrueacf(fit.ar3)
-
 }
 \keyword{hplot}
-

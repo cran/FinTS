@@ -1,0 +1,114 @@
+url: https://geobosh.github.io/FinTSDoc/
+
+deploy:
+  install_metadata: true
+
+template:
+  bootstrap: 5
+  
+search:
+  exclude: ['news/index.html']
+
+reference:
+  - title: "Overview of package FinTS"
+    contents:
+      - "FinTS-package"
+      - FinTS
+  - title: "Datasets, arranged by chapter"
+    contents:
+     - d.ibmvwewsp6203
+     - d.intc7303
+     - d.3m6203
+     - d.msft8603
+     - d.c8603
+     - m.ibmvwewsp2603
+     - m.intc7303
+     - m.3m4603
+     - m.msft8603
+     - m.c8603
+     - m.gs10
+     - m.gs1
+     - d.fxjp00
+     - m.fama.bond5203
+     - m.gs3
+     - m.gs5
+     - w.tb3ms
+     - w.tb6ms
+     -   m.ibm2697
+     -   m.vw2697
+     -   q.gnp4791
+     -   m.ibm3dx2603
+     -   m.3m4697
+     -   q.gdp4703
+     -   d.sp9003lev
+     -   q.jnj
+     -   m.decile1510
+     -   w.gs1n36299
+     - exch.perc
+     - sp500
+     - m.ibmspln
+     - m.ibmsplnsu
+     - d.sp8099
+     -   m.unrate
+     -   w.3mtbs7097
+     -   m.ibmln2699
+     -   q.unemrate
+     - ibm
+     - ibm9912.tp
+     - ibmdurad
+     - ibm1to5.dur
+     - ibm91.ads
+     - ibm91.adsx
+     - day15.ori
+     - day15
+     -   d.ibmy98
+     -   d.cscoy99
+     - d.ibm6298wmx
+     - d.intc7297
+     -   m.ibmsp2699ln
+     -   m.bnd
+     -   m.gs1n3.5301
+     -   w.tb3n6ms
+     -   sp5may
+     - m.fac9003
+     - m.cpice16.dp7503
+     - m.barra.9003
+     - m.5cln
+     - m.apca0103
+     -   d.hkja
+     -   m.pfe6503
+     -   m.mrk6503
+     -   d.spcscointc
+     - aa.3rv
+     -   w.gs3n1c
+     -   w.gs3c
+     -   m.sp6299
+     -   m.ibmspln6299
+     -   m.sp5.6204
+     -   m.geln
+  - title: "ARIMA and autocorrelations"
+    contents:
+     - ARIMA
+     - Acf
+     - plot.Acf
+     - AutocorTest
+     - plotArmaTrueacf
+  - title: "Financial statistics and utilities"
+    contents:
+     - ArchTest
+     - FinTS.stats
+     - compoundInterest
+     - simple2logReturns
+  - title: "Other statistics"
+    contents:
+     - apca
+     - plot.loadings
+  - title: "Other"
+    contents:
+     - TsayFiles
+     - read.yearmon
+     - as.yearmon2
+     - findConjugates
+     - url2data
+     - package.dir
+     - runscript

@@ -16,10 +16,9 @@
 }
 \usage{
 TsayFiles
-FinTS.url
 }
 \format{
-  \itemize{
+  \describe{
     \item{TsayFiles}{
       A list with names 'ch01', 'ch02', ..., 'ch12' for components
       describing the files associated with the corresponding chapter.
@@ -29,7 +28,7 @@ FinTS.url
       array giving names for 'data', 'file', 'url', and 'found' for the
       data referenced in the text or exercises of that chapter:
 
-      \itemize{
+      \describe{
 	\item{data}{
 	  'file' without the extension, e.g, 'd-ibmvwewsp6203' for daily
 	  simple returns of IBM, VW, EW, SP (7/3/62-12/31/03) = 'file'
@@ -65,7 +64,8 @@ FinTS.url
       A character string giving the universal resource locator (URL)
       associated with the Tsay (2005) book:
 
-      FinTS.url <- "http://faculty.chicagogsb.edu/ruey.tsay/teaching/fts2"
+      % was: "http://faculty.chicagogsb.edu/ruey.tsay/teaching/fts2"
+      \code{FinTS.url <- "https://faculty.chicagobooth.edu/ruey-s-tsay/teaching"}
     }
   }
 }
@@ -78,6 +78,4 @@ FinTS.url
 data(TsayFiles)
 TsayFiles$ch01$exercises
 }
-% docclass is function
 \keyword{datasets}
-

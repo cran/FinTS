@@ -15,7 +15,7 @@ apca(x,nf)
     a numeric matrix.
   }
   \item{nf}{
-    number of factors desired
+    number of factors desired.
   }
 }
 \details{
@@ -47,9 +47,10 @@ apca(x,nf)
 # from 2001 to 2003 with 36 observations.
 data(m.apca0103)
 dim(m.apca0103)
-M.apca0103 <- with(m.apca0103, array(return, dim=c(36, 40), dimnames=
-          list(as.character(date[1:36]),
-               paste("Co", CompanyID[seq(1, 1440, 36)], sep=""))))
+M.apca0103 <- with(m.apca0103,
+    array(return, dim = c(36, 40),
+          dimnames = list(as.character(date[1:36]),
+                          paste("Co", CompanyID[seq(1, 1440, 36)], sep = ""))))
 
 # The traditional PCA is not applicable to estimate the factor model
 # because of the singularity of the covariance matrix.  The asymptotic
@@ -72,6 +73,5 @@ apca40 <- apca(M.apca0103, 1)
 # the simple case considered, the summary of R-squares is (min, 1st
 # Quartile, median, mean, 3rd quartile, max) =
 # (0.090,0.287,0.487,0.456,0.574,0.831).
-
 }
 \keyword{ts}

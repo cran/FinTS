@@ -8,7 +8,7 @@
 \alias{w.3mtbs7097}
 \alias{m.ibmln2699}
 \alias{q.unemrate}
-\title{ financial time series for Tsay (2005, chapter 4[text]) }
+\title{ Financial time series for Tsay (2005, ch. 4) }
 \description{
   Financial time series used in examples in chapter 4.
 }
@@ -29,7 +29,7 @@ data(q.unemrate)
 
   The other data sets used in chapter 4 are as follows:
 
-  \itemize{
+  \describe{
     \item{m.unrate}{
       zoo object giving the monthly US civilian unemployment rate from
       1948 through 2004.
@@ -51,9 +51,7 @@ data(q.unemrate)
 %\details{
 %}
 \source{
-  \url{
-    http://faculty.chicagobooth.edu/ruey.tsay/teaching/fts2
-  }
+  \url{https://faculty.chicagobooth.edu/ruey-s-tsay/teaching}
 }
 \references{
   Ruey Tsay (2005) Analysis of Financial Time Series, 2nd ed. (Wiley,

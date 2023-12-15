@@ -7,7 +7,7 @@
 \alias{m.ibmspln6299}
 \alias{m.sp5.6204}
 \alias{m.geln}
-\title{ financial time series for Tsay (2005, chapter 12[text]) }
+\title{ Financial time series for Tsay (2005, ch. 12) }
 \description{
   Financial time series used in examples in chapter 12.
 }
@@ -21,24 +21,30 @@ data(m.geln)
 }
 \format{
 
-  \itemize{
+  \describe{
     \item{w.gs3n1c}{
       a zoo object of the change series of weekly US interest rates (3
       and 1 year maturities) from  Jan. 5, 1962, to Sep. 10, 1999.  This
-      was obtained via diff(window(w.gs1n36299,
-      start=as.Date("1962-01-05"), end=as.Date("1999-09-10")))[, 2:1] to
-      get the dates with the data. Then 'all.equal' confirmed that these
-      numbers matched those in the file read from the web site (which
-      did not have dates).
+      was obtained via
+      
+      \code{diff(window(w.gs1n36299, start=as.Date("1962-01-05"), end=as.Date("1999-09-10")))[, 2:1]}
+
+      to get the dates with the data. Then 'all.equal' confirmed that
+      these numbers matched those in the file read from the web site
+      (which did not have dates).
 
       These are used in Example 12.1, pp. 556ff.
     }
     \item{w.gs3c}{
+      
       a zoo object giving the change series of weekly US 3-year maturity
       interest rates from March 18, 1988, to Sept. 10, 1999.  This was
-      obtained via window(w.gs3n1c[, 1], start=as.Date("1988-03-18"),
-      end = as.Date("1999-09-10")).  Then 'all.equal' confirmed that
-      these numbers matched those read from the web site.
+      obtained via
+
+      \code{window(w.gs3n1c[, 1], start=as.Date("1988-03-18"), end = as.Date("1999-09-10"))}.
+
+      Then 'all.equal' confirmed that these numbers matched those read
+      from the web site.
 
       These data are used in Example 12.2, pp. 564ff.
     }
@@ -51,8 +57,9 @@ data(m.geln)
       with this series on the book's web site.  Moreover, the file with
       chapter 12 has only 4 significant digits where the earlier file
       has 6.  Since the other data are otherwise identical, this
-      'm.sp6299' was constructed as 'window(m.ibmspln[, 2],
-      start=yearmon(1962), end=yearmon(1999+11/12))'.
+      'm.sp6299' was constructed as
+
+      \code{window(m.ibmspln[, 2], start = yearmon(1962), end = yearmon(1999+11/12))}.
     }
     \item{m.ibmspln6299}{
       Monthly log returns of IBM stock and the S&P 500 index from
@@ -75,9 +82,7 @@ data(m.geln)
 %\details{
 %}
 \source{
-  \url{
-    http://faculty.chicagobooth.edu/ruey.tsay/teaching/fts2
-  }
+  \url{https://faculty.chicagobooth.edu/ruey-s-tsay/teaching}
 }
 \references{
   Ruey Tsay (2005) Analysis of Financial Time Series, 2nd ed. (Wiley,
@@ -85,18 +90,17 @@ data(m.geln)
 }
 \keyword{datasets}
 \seealso{
-  \code{\link{ch01data}}
-  \code{\link{ch02data}}
-  \code{\link{ch03data}}
-  \code{\link{ch04data}}
-  \code{\link{ch05data}}
-  \code{\link{ch06data}}
-  \code{\link{ch07data}}
-  \code{\link{ch08data}}
-  \code{\link{ch09data}}
-  \code{\link{ch10data}}
+  \code{\link{ch01data}},
+  \code{\link{ch02data}},
+  \code{\link{ch03data}},
+  \code{\link{ch04data}},
+  \code{\link{ch05data}},
+  \code{\link{ch06data}},
+  \code{\link{ch07data}},
+  \code{\link{ch08data}},
+  \code{\link{ch09data}},
+  \code{\link{ch10data}},
   \code{\link{ch11data}}
 }
 %\examples{
 %}
-

@@ -6,7 +6,7 @@
 \alias{m.gs1n3.5301}
 \alias{w.tb3n6ms}
 \alias{sp5may}
-\title{ financial time series for Tsay (2005, chapter 8[text]) }
+\title{ Financial time series for Tsay (2005, ch. 8) }
 \description{
   Financial time series used in examples in chapter 8.
 }
@@ -19,7 +19,7 @@ data(sp5may)
 }
 \format{
 
-  \itemize{
+  \describe{
     \item{m.ibmsp2699ln}{
       zoo object giving monthly simple and log returns of IBM stock and
       the Standard and Poor's 500 from 1926 through 1999.  (This
@@ -50,7 +50,7 @@ data(sp5may)
       are.  The following is a current guess and will doubtless change
       in the future.
 
-      \itemize{
+      \describe{
 	\item{logFuture}{
 	  logarithms of June Futures contracts traded at the Chicago
 	  Mercantile Exchange.  The first difference of this series
@@ -88,9 +88,7 @@ data(sp5may)
 %\details{
 %}
 \source{
-  \url{
-    http://faculty.chicagobooth.edu/ruey.tsay/teaching/fts2
-  }
+  \url{https://faculty.chicagobooth.edu/ruey-s-tsay/teaching}
 }
 \references{
   Forbes, C. S., Kalb, G. R. J., and Kofman, P. (1999) 'Bayesian
@@ -105,9 +103,8 @@ data(sp5may)
 }
 \keyword{datasets}
 \seealso{
-  \code{\link{ch01data}}
+  \code{\link{ch01data}},
   \code{\link{ch02data}}
 }
 %\examples{
 %}
-

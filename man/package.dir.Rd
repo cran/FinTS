@@ -8,10 +8,10 @@
   could make it easier to learn capabilities of the package.
 }
 \usage{
-package.dir(package='base', lib.loc=NULL,
-      exclude=c('chtml', 'data', 'help', 'html', 'latex', 'libs',
-                'man', 'Meta', 'po', 'R', 'R-ex', 'src'),
-      include=NULL, pattern=NULL, recursive=FALSE)
+package.dir(package = 'base', lib.loc = NULL,
+      exclude = c('chtml', 'data', 'help', 'html', 'latex', 'libs',
+                  'man', 'Meta', 'po', 'R', 'R-ex', 'src'),
+      include = NULL, pattern = NULL, recursive = FALSE)
 }
 \arguments{
   \item{package}{
@@ -45,16 +45,17 @@ package.dir(package='base', lib.loc=NULL,
   }
 }
 \details{
-  1.  fullPath <- system.file(package=package, lib.loc=lib.loc)
+  1.  \code{fullPath <- system.file(package = package, lib.loc = lib.loc)}
 
-  2.  Dir <- dir(fullPath)
+  2.  \code{Dir <- dir(fullPath)}
 
   3.  Restrict Dir only to 'include' if provided and to all but
   'exclude' otherwise.
 
-  4.  If recursive, return a list produced by \link{dir} for each of the
-  subdirectories of interest determined in step 3.  Else, return only
-  the list of subdirectories from step 3.
+  4.  If recursive, return a list produced by \code{\link{dir}} for each
+  of the subdirectories of interest determined in step 3.  Else, return
+  only the list of subdirectories from step 3.
+
 }
 \value{
   If recursive, a list of the contents of the subdirectories of
@@ -73,8 +74,7 @@ package.dir(package='base', lib.loc=NULL,
 }
 \examples{
 package.dir() # 'demo'
-package.dir(recursive=TRUE) # contents of 'demo'
+package.dir(recursive = TRUE) # contents of 'demo'
 package.dir('nlme') # 'mlbook', 'scripts'
 }
 \keyword{package}
-

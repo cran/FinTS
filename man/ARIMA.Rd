@@ -77,11 +77,9 @@ ARIMA(x, order = c(0, 0, 0),
   \item{Box.test.lag}{
     the Box.test statistic will be based on 'Box.test.lag'
     autocorrelation coefficients of the whitened residuals.
-
     The default is the maximum of the following:
-
 %    \itemize{
-      round(log(sum(!is.na(x)))), recommended by Tsay (p. 27)
+      \code{round(log(sum(!is.na(x))))}, recommended by Tsay (p. 27).
 
       One more than the number of parameters estimated, not counting any
       'intercept' in the model.
@@ -155,7 +153,7 @@ ARIMA(x, order = c(0, 0, 0),
 
   Patrick Burns (2002) 'Robustness of the Ljung-Box Test and its Rank
   Equivalent',
-  \url{http://www.burns-stat.com/pages/Working/ljungbox.pdf}, accessed
+  \url{https://www.burns-stat.com/pages/Working/ljungbox.pdf}, accessed
   2007.12.29.
 }
 \author{
@@ -220,7 +218,6 @@ tLH2 <- cbind(timeLH.1920 = tLH, time.sq = tLH*tLH)
 
 LakeH200. <- ARIMA(LakeHuron, order=c(2,0,0), xreg=tLH2)
 LakeH200.$r.squared
-
 }
 \keyword{ts}
 

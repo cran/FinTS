@@ -20,7 +20,7 @@
 \alias{m.gs5}
 \alias{w.tb3ms}
 \alias{w.tb6ms}
-\title{ financial time series for Tsay (2005, chapter 1[text]) }
+\title{ Financial time series for Tsay (2005, ch. 1) }
 \description{
   Financial time series used in examples in chapter 1.
 }
@@ -49,7 +49,7 @@ data(w.tb6ms)
   (day, week or month) for different periods, with different start dates
   but typically running to the end of 2003.
 
-  \itemize{
+  \describe{
     \item{d.ibmvwewsp6203, m.ibmvwewsp2603}{
       Zoo objects with 4 columns (IBM, VW, EW, and SP).  Daily data
       starts with 1962-07-03.  Monthly data starts with 1926-01-30.
@@ -79,7 +79,7 @@ data(w.tb6ms)
     }
     \item{m.fama.bond5203}{
       Monthly bond returns as follows:
-      \itemize{
+      \describe{
 	\item{m1.12}{1-12m}
 	\item{m24.36}{24-36m}
 	\item{m48.60}{48-60m}
@@ -103,9 +103,7 @@ data(w.tb6ms)
   The others are used elsewhere in chapter 1.
 }
 \source{
-  \url{
-    http://faculty.chicagobooth.edu/ruey.tsay/teaching/fts2
-  }
+  \url{https://faculty.chicagobooth.edu/ruey-s-tsay/teaching}
 }
 \references{
   Ruey Tsay (2005) Analysis of Financial Time Series, 2nd ed. (Wiley,
@@ -141,7 +139,4 @@ data(d.c8603)
     MSFT=FinTS.stats(100*log(1+d.msft8603[, 'MSFT'])),
     C  = FinTS.stats(100*log(1+d.c8603[, "C"]))
 ) )
-
-
 }
-

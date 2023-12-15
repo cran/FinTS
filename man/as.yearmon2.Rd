@@ -2,7 +2,7 @@
 \alias{as.yearmon2}
 
 \title{
-  Conditionally convert x to yearmon if the conversion is unqique,
+  Conditionally convert x to yearmon if the conversion is unique,
   retaining x as names.
 }
 \description{
@@ -28,7 +28,7 @@ as.yearmon2(x, \dots)
   data as a \code{zoo} object with a \code{yearmon} index, while still
   retaining the full date for other purposes.
 
-  If the \code{yearmon} form of the input is not uniqe,
+  If the \code{yearmon} form of the input is not unique,
   \code{as.yearmon2} returns the input unchanged with a warning.
   Otherwise, it returns the \code{yearmon} conversion with the input as
   names.
@@ -52,6 +52,5 @@ as.yearmon2(x1)
 x2 <- as.Date(c("2000-01-01", "2000-02-01"))
 as.yearmon2(x2)
 # month of x2 with names x2
-
 }
 \keyword{ts}

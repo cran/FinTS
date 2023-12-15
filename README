@@ -1,3 +1,13 @@
+#################################
+*Note by Georgi:* The package needs to be build with 
+
+ R CMD build FinTS --resave-data
+
+Otherwise, 'R CMD check' gives warning suggesting to do exactly that.
+Once the package is built with '--resave-data' R inserts a dependency on R (>= 2.10), but
+this shouldn't be a problem.
+#################################
+
 The follow describes how different packages are used.  
 
 
@@ -64,4 +74,3 @@ logSpline:  At one time, this was used in one of the scripts files.
 However, I can't find it now, and I may have deleted it.    
 
 ##############################
-

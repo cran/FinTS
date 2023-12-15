@@ -1,6 +1,5 @@
 \name{read.yearmon}
 \alias{read.yearmon}
-
 \title{Reading Monthly zoo Series}
 \description{
   Read a text file containing monthly data with a date column and return
@@ -12,8 +11,6 @@ read.yearmon(file, format = "", tz = "", FUN = NULL, regular = FALSE,
              index.column = 1, \dots)
 }
 \arguments{
-  As for \code{read.zoo}:  
-  
   \item{file}{character giving the name of the file which the data
     are to be read from/written to. See \code{\link{read.table}} and
     \code{\link{write.table}} for more information.}
@@ -30,20 +27,23 @@ read.yearmon(file, format = "", tz = "", FUN = NULL, regular = FALSE,
 }
 
 \details{
-  TS <- read.zoo(...)
-  zoo(coredata(TS), as.yearmon2(index(TS))) 
+  The arguments are as for \code{read.zoo}:  
+  
+  \code{TS <- read.zoo(...)}
+
+  \code{zoo(coredata(TS), as.yearmon2(index(TS))) }
 }
 
 \value{
-  an object of class \code{"zoo"} (or \code{"zooreg"}).
+  an object of class \code{"zoo"} or \code{"zooreg"}.
 }
 
 \seealso{
-  \code{\link[utils]{read.table}}
-  \code{\link[zoo]{zoo}}
-  \code{\link[zoo]{read.zoo}}
-  \code{\link[zoo]{coredata}}
-  \code{\link[zoo]{index}}
+  \code{\link[utils]{read.table}},
+  \code{\link[zoo]{zoo}},
+  \code{\link[zoo]{read.zoo}},
+  \code{\link[zoo]{coredata}},
+  \code{\link[zoo]{index}},
   \code{\link{as.yearmon2}}
 }
 
@@ -53,8 +53,6 @@ read.yearmon(file, format = "", tz = "", FUN = NULL, regular = FALSE,
 ## where number is year + fraction of year represented by month
 z <- read.zoo("foo.csv", sep = ",", FUN = as.yearmon2)
 z2 <- read.yearmon("foo.csv", sep = ",")
-
 }
 }
 \keyword{ts}
-

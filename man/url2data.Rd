@@ -1,6 +1,6 @@
 \name{url2data}
 \alias{url2data}
-\title{ Create local copies of files read from urls. }
+\title{ Create local copies of files read from urls }
 \description{
   Call 'download.file' with each element of a vector of character
   strings assumed to be URLs, create a local copy for each, and return a
@@ -16,13 +16,13 @@ url2data(url.)
   }
 }
 \details{
-  1.  fili <- names(urls.)
+  1.  \code{fili <- names(urls.)}
 
-  2.  dati <- fili without its extension, i.e., the part following the
-  last '.'
+  2.  \code{dati <- fili} without its extension, i.e., the part
+  following the last '.'
 
-  3.  for(i in 1:length(url.)try(download.file(url.[i], fili[i]));
-  found[i] = TRUE if something found and FALSE if not.  
+  3.  \code{for(i in 1:length(url.)try(download.file(url.[i], fili[i]));}
+  \code{found[i] = TRUE} if something found and FALSE if not.  
 
   4.  Return a character matrix with 4 columns:  data = dati, file =
   fili, url = url., and found.  

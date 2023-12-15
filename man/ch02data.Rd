@@ -11,7 +11,7 @@
 \alias{q.jnj}
 \alias{m.decile1510}
 \alias{w.gs1n36299}
-\title{ financial time series for Tsay (2005, chapter 2[text]) }
+\title{ Financial time series for Tsay (2005, ch. 2) }
 \description{
   Financial time series used in examples in chapter 2.
 }
@@ -31,7 +31,7 @@ data(w.gs1n36299)
   Objects of class zoo giving simple returns for each trading period
   (day, week or month) for different periods.
 
-  \itemize{
+  \describe{
     \item{m.ibm2697, m.vw2697}{
       Monthly returns for IBM stock and the value weighted index from
       1926 to 1997.
@@ -78,17 +78,19 @@ data(w.gs1n36299)
       quality problems (e.g., a date of 1962-08-32).
 
       To get data covering January 4, 1962, through September 10, 1999,
-      use window(w.gs1n36299, start=as.Date("1962-01-12"),
-      end=as.Date("1999-09-10"));  see 'examples' below.
+      use
+
+      \code{window(w.gs1n36299, start = as.Date("1962-01-12"),
+	end=as.Date("1999-09-10"))};
+
+      see 'examples' below.
     }
   }
 }
 %\details{
 %}
 \source{
-  \url{
-    http://faculty.chicagobooth.edu/ruey.tsay/teaching/fts2
-  }
+  \url{https://faculty.chicagobooth.edu/ruey-s-tsay/teaching}
 }
 \references{
   Ruey Tsay (2005) Analysis of Financial Time Series, 2nd ed. (Wiley,
@@ -99,7 +101,6 @@ data(w.gs1n36299)
 }
 \seealso{ \code{\link{ch01data}} }
 \examples{
-##
 ## m.decile1510 has 'index' of class 'Date'
 ## Since it's a monthly series, for many purposes,
 ## it should have 'index' of class 'yearmon'.
@@ -108,13 +109,11 @@ data(w.gs1n36299)
 data(m.decile1510)
 mDecile1510 <- zoo(m.decile1510, as.yearmon(index(m.decile1510)))
 
-##
 ## w.gs1n36299 covers a broader range than used in
 ## Tsay (2005, sec. 2.9, pp. 80ff):  subset using 'window':
 ##
 data(w.gs1n36299)
-w.gs1n3 <- window(w.gs1n36299, start=as.Date("1962-01-12"),
-    end=as.Date("1999-09-10"))
+w.gs1n3 <- window(w.gs1n36299, start = as.Date("1962-01-12"),
+    end = as.Date("1999-09-10"))
 }
 \keyword{datasets}
-

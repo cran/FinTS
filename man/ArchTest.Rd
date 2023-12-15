@@ -39,6 +39,5 @@ ArchTest (x, lags=12, demean = FALSE)
 data(m.intc7303)
 intcLM <- ArchTest(log(1+as.numeric(m.intc7303)), lag=12)
 # Matches answer on Tsay (p. 102) 
-
 }
 \keyword{ts}
