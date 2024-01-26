@@ -1,6 +1,6 @@
-4626b196644517a9a32a7d124e68e38b *DESCRIPTION
-04a1a80b703fd69a062cfbab995b4caa *NAMESPACE
-79a7e0c5e6be84b8c91a5c981d8e5421 *NEWS
+feeb294a9622c9c81405ed63508ef494 *DESCRIPTION
+63f04f773c80527a70faac9ec41b980f *NAMESPACE
+e69659ecbabced878a9e3cbaed74f793 *NEWS
 c26d6382f2e050b63caf530dc588faed *R/ARIMA.R
 4bb50b48c5b348480a96ee62e58f491c *R/Acf.R
 33fd4f7e4fc50ed659e32c456eeef7c8 *R/ArchTest.R
@@ -18,7 +18,7 @@ a3e904e2d29802c6f3e3ec9d0decaba5 *R/runscript.R
 e75ffcd0df6e493769daa1cb0ff4d405 *R/simple2logReturns.R
 60059b3b167c729e3a0459331301da10 *R/url2data.R
 7a8245a2da91082f63d49f382fc62a88 *README
-2a7a8980139b918a1af71e5e221ef41f *build/partial.rdb
+0d16d76929122853e60e0cf7fe8fecc1 *build/partial.rdb
 2ab773fc97fa6602930b613a484e94b4 *data/TsayFiles.rda
 66bee77409817273bc1c284afd304c85 *data/aa.3rv.rda
 c30ba6d3a61997890f846eb587ba24e0 *data/d.3m6203.rda
@@ -94,7 +94,7 @@ ff6e39c00e4b8552930d84e528846cda *data/w.tb3n6ms.rda
 5254770d5188041c2ce00352d5e3f49f *inst/pkgdown.yml
 905d5cbb9bf89f2451fc0fa060ac7678 *inst/scripts/TsayFiles.7z
 e405df7912927dc3187f22aa1f169dd7 *inst/scripts/TsayFiles.R
-5b4d19c1e56a7e46516732b40d11e126 *inst/scripts/ch01.R
+3de946760923d583b977846daa58339a *inst/scripts/ch01.R
 383cca17a0794ba379b0ec87c0efdafc *inst/scripts/ch02.R
 aaea2eb09c69e4d2532b50e3a67bcefe *inst/scripts/ch03.R
 118008dbe5ca520b5f14ad039d82d971 *inst/scripts/ch04.R

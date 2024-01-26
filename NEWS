@@ -1,3 +1,11 @@
+Changes in Version 0.4-9
+
+  o removed package 'distrEx' from 'Suggests'.
+
+  o fixed 'inst/scripts/ch01.R' to not throw error if a package needed for an
+    example is not installed.
+
+
 Changes in Version 0.4-8
 
   o fixed CRAN NOTEs 'Lost braces in \itemize; meant \describe ?'.

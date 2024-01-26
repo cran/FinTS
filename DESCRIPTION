@@ -1,7 +1,7 @@
 Package: FinTS
 Type: Package
 Title: Companion to Tsay (2005) Analysis of Financial Time Series
-Version: 0.4-8
+Version: 0.4-9
 Authors@R: c( person(given = "Spencer", family = "Graves",
                      role = c("aut"), 
                      email = "spencer.graves@effectivedefense.org"),
@@ -19,13 +19,13 @@ BugReports: https://r-forge.r-project.org/tracker/?group_id=84&atid=380
 URL: https://geobosh.github.io/FinTSDoc/ (doc),
         https://r-forge.r-project.org/projects/fints/ (devel)
 Depends: R (>= 2.10), zoo, graphics
-Suggests: moments, distrEx, tseries, urca, lmtest, sandwich, psych,
-        GPArotation, chron, polynom, e1071
+Suggests: moments, tseries, urca, lmtest, sandwich, psych, GPArotation,
+        chron, polynom, e1071
 LazyData: yes
 NeedsCompilation: no
-Packaged: 2023-12-15 13:33:31 UTC; georgi
+Packaged: 2024-01-26 16:05:52 UTC; georgi
 Author: Spencer Graves [aut],
   Georgi N. Boshnakov [cre, ctb]
 Maintainer: Georgi N. Boshnakov <georgi.boshnakov@manchester.ac.uk>
 Repository: CRAN
-Date/Publication: 2023-12-15 16:50:02 UTC
+Date/Publication: 2024-01-26 19:20:02 UTC

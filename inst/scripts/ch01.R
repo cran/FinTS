@@ -137,20 +137,24 @@ FinTS.stats(100*d.ibmvwewsp6203[, "IBM"])
 # p. 16
 # Figure 1.1.  Comparisons of Finite Mixture, Stable
 #              and Standard Normal Distributions
-library(distrEx)
-
-N01 <- Norm()
-N04 <- Norm(0, 4)
-
-contamNorm <- ConvexContamination(N01, N04, size = 0.05)
-
-plot(dnorm, xlim=c(-4, 4))
-text(.75, .39, "Normal") 
-x <- seq(-4, 4, len=201)
-lines(x, d(contamNorm)(x), lty="dotted", col="red", lwd=2)
-text(0, 0.351, "Mixture", col="red")
-lines(x, dcauchy(x), lty="dashed", col="green", lwd=2)
-text(0, 0.25, "Cauchy", col="green")
+if(require(distrEx)) {
+    N01 <- Norm()
+    N04 <- Norm(0, 4)
+    
+    contamNorm <- ConvexContamination(N01, N04, size = 0.05)
+    
+    plot(dnorm, xlim=c(-4, 4))
+    text(.75, .39, "Normal") 
+    x <- seq(-4, 4, len=201)
+    lines(x, d(contamNorm)(x), lty="dotted", col="red", lwd=2)
+    text(0, 0.351, "Mixture", col="red")
+    lines(x, dcauchy(x), lty="dashed", col="green", lwd=2)
+    text(0, 0.25, "Cauchy", col="green")
+} else {
+    message("Please install package 'distrEx' to run the example\n",
+            "creating Fig. 1.1 for comparison of finite mixture,\n",
+            "stable and standard normal distributions\n")
+}
 
 # p. 17
 # Sec. 1.2.5.  Empirical properties of returns
@@ -174,7 +178,6 @@ par(op)
 # p. 19
 # Figure 1.4.  Comparison of empirical and normal densities
 # for the monthly simple and log returns of IBM stock
-
 if(require(logspline)){
 
   m.ibm <- m.ibmvwewsp2603[, "IBM"]
@@ -191,10 +194,13 @@ if(require(logspline)){
   plot(dens.ibm.logrtns, xlim=c(-40, 40), xlab="log returns", ylab="density")
   lines(x.ibm, dnorm(x.ibm, mean=mean(m.log.ibm), s=sd(m.log.ibm)),
         lty="dotted", col="red", lwd=2)
+  qqnorm(100*m.ibm, datax=TRUE)
+  qqnorm(m.log.ibm, datax=TRUE)
   par(op)
+} else {
+    message("Please install package 'logspline' to run the example\n",
+            "creating Figure 1.4. Comparison of empirical and normal densities.\n")
 }
-qqnorm(100*m.ibm, datax=TRUE)
-qqnorm(m.log.ibm, datax=TRUE)
 
 # normal plots may provide a more sensitive evaluation
 # of skewness and kurtosis than density plots
